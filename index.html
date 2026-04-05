@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q Starr</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#c9a84c;--gold-light:#e8d48b;--gold-dim:#8a7333;--bg:#0a0a0f;--bg-card:#12121a;--bg-card-hover:#1a1a25;--text:#e8e8ed;--text-dim:#8888a0;--border:#222235}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(201,168,76,.15) 0%,rgba(201,168,76,.05) 40%,transparent 70%);pointer-events:none}
+.hero-logo{width:80px;height:80px;margin-bottom:2rem}
+.hero-logo svg{width:100%;height:100%}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin-bottom:1.5rem}
+.hero h1 .gold{color:var(--gold)}
+.hero p{font-size:1.25rem;color:var(--text-dim);max-width:500px;margin-bottom:2.5rem;font-weight:300}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.hero-cta a{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.75rem;border-radius:50px;text-decoration:none;font-weight:500;font-size:1rem;transition:all .3s ease}
+.btn-primary{background:var(--gold);color:#0a0a0f}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.25)}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--gold-dim);color:var(--gold-light);transform:translateY(-2px)}
+section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:.8rem;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:1rem}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.5rem;line-height:1.15}
+.section-desc{font-size:1.1rem;color:var(--text-dim);max-width:600px;font-weight:300;margin-bottom:3rem}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-top:2rem}
+.product-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;transition:all .3s ease;position:relative;overflow:hidden}
+.product-card:hover{background:var(--bg-card-hover);border-color:var(--gold-dim);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.product-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));opacity:0;transition:opacity .3s ease}
+.product-card:hover::before{opacity:1}
+.product-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
+.product-icon.starr{background:linear-gradient(135deg,#1a1a2e,#16213e);border:1px solid var(--gold-dim)}
+.product-icon.sunlight{background:linear-gradient(135deg,#2e1a0a,#3e2916);border:1px solid #c4883a}
+.product-card h3{font-size:1.5rem;font-weight:600;margin-bottom:.75rem}
+.product-card .tagline{color:var(--gold);font-size:.9rem;font-weight:500;margin-bottom:1rem}
+.product-card p{color:var(--text-dim);font-size:.95rem;line-height:1.7;margin-bottom:1.5rem}
+.features-list{list-style:none;margin-bottom:2rem}
+.features-list li{padding:.4rem 0;color:var(--text-dim);font-size:.9rem;display:flex;align-items:center;gap:.6rem}
+.features-list li::before{content:'\2192';color:var(--gold);font-weight:600}
+.badge{display:inline-block;padding:.3rem .85rem;border-radius:50px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.badge-live{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+.product-card .download-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:50px;text-decoration:none;font-weight:500;font-size:.9rem;transition:all .3s ease;background:var(--gold);color:#0a0a0f;margin-top:.5rem}
+.product-card .download-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.25)}
+.how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-top:2rem}
+.how-step{text-align:center;padding:2rem 1.5rem}
+.step-num{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;font-weight:600;color:var(--gold);font-size:1.1rem}
+.how-step h4{font-size:1.1rem;font-weight:600;margin-bottom:.5rem}
+.how-step p{color:var(--text-dim);font-size:.9rem;line-height:1.6}
+.divider{width:60px;height:1px;background:var(--gold-dim);margin:0 auto}
+footer{text-align:center;padding:4rem 2rem;border-top:1px solid var(--border)}
+footer p{color:var(--text-dim);font-size:.85rem;margin-bottom:1rem}
+.social-links{display:flex;gap:1.5rem;justify-content:center;margin-bottom:1.5rem}
+.social-links a{color:var(--text-dim);text-decoration:none;font-size:.9rem;transition:color .3s ease}
+.social-links a:hover{color:var(--gold)}
+@media(max-width:640px){section{padding:4rem 1.25rem}.product-card{padding:1.75rem}.hero-cta{flex-direction:column;align-items:center}}
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="hero-logo"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="48" stroke="#c9a84c" stroke-width="1" opacity="0.3"/><circle cx="50" cy="50" r="8" fill="#c9a84c"/><line x1="50" y1="10" x2="50" y2="35" stroke="#c9a84c" stroke-width="2"/><line x1="50" y1="65" x2="50" y2="90" stroke="#c9a84c" stroke-width="2"/><line x1="10" y1="50" x2="35" y2="50" stroke="#c9a84c" stroke-width="2"/><line x1="65" y1="50" x2="90" y2="50" stroke="#c9a84c" stroke-width="2"/><line x1="21.7" y1="21.7" x2="39.4" y2="39.4" stroke="#c9a84c" stroke-width="1.5"/><line x1="60.6" y1="60.6" x2="78.3" y2="78.3" stroke="#c9a84c" stroke-width="1.5"/><line x1="78.3" y1="21.7" x2="60.6" y2="39.4" stroke="#c9a84c" stroke-width="1.5"/><line x1="39.4" y1="60.6" x2="21.7" y2="78.3" stroke="#c9a84c" stroke-width="1.5"/></svg></div>
+<h1>Better Light.<br><span class="gold">Smarter AI.</span></h1>
+<p>Two apps designed to help you live better — track your sunlight, get AI answers anywhere.</p>
+<div class="hero-cta">
+<a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="btn-primary"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> Download Starr AI</a>
+<a href="#products" class="btn-secondary">Learn More</a>
+</div>
+</div>
+<section id="products">
+<div class="section-label">Products</div>
+<h2 class="section-title">Two tools. One mission.</h2>
+<p class="section-desc">Technology that helps people take back their time and their health.</p>
+<div class="products">
+<div class="product-card">
+<div class="product-icon starr"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="6" fill="#c9a84c"/><line x1="50" y1="15" x2="50" y2="38" stroke="#c9a84c" stroke-width="2.5"/><line x1="50" y1="62" x2="50" y2="85" stroke="#c9a84c" stroke-width="2.5"/><line x1="15" y1="50" x2="38" y2="50" stroke="#c9a84c" stroke-width="2.5"/><line x1="62" y1="50" x2="85" y2="50" stroke="#c9a84c" stroke-width="2.5"/></svg></div>
+<span class="badge badge-live">Available Now</span>
+<h3>Starr AI</h3>
+<div class="tagline">AI that lives on your phone — and works without Wi-Fi.</div>
+<p>Your AI travel companion that works at 30,000 feet. Translate, look things up, and get answers with no internet required. One download, fully offline, forever.</p>
+<ul class="features-list"><li>Works 100% offline after first download</li><li>iPhone + Apple Watch</li><li>No account needed, no subscriptions</li><li>Translate, research, and ask anything — anywhere</li></ul>
+<a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="download-btn">App Store — Free</a>
+</div>
+<div class="product-card">
+<div class="product-icon sunlight"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="16" stroke="#c4883a" stroke-width="3" fill="none"/><circle cx="50" cy="50" r="6" fill="#c4883a"/><line x1="50" y1="5" x2="50" y2="25" stroke="#c4883a" stroke-width="2.5"/><line x1="50" y1="75" x2="50" y2="95" stroke="#c4883a" stroke-width="2.5"/><line x1="5" y1="50" x2="25" y2="50" stroke="#c4883a" stroke-width="2.5"/><line x1="75" y1="50" x2="95" y2="50" stroke="#c4883a" stroke-width="2.5"/></svg></div>
+<span class="badge badge-live">Available Now</span>
+<h3>Sun Light</h3>
+<div class="tagline">Track your daily sunlight automatically with Apple Watch.</div>
+<p>Your Apple Watch already measures your time in daylight. Sun Light turns that data into something you can actually use — a daily goal, a progress ring, a streak counter, and a clear picture of when you're getting your light.</p>
+<ul class="features-list"><li>Automatic tracking via Apple Watch — no buttons to press</li><li>Daily progress ring, streaks, and customizable goals</li><li>Morning, afternoon, and evening time breakdowns</li><li>Home screen, Lock Screen, and Apple Watch widgets</li></ul>
+<a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" class="download-btn">App Store — Free</a>
+</div>
+</div>
+</section>
+<div class="divider"></div>
+<section>
+<div class="section-label">How it Works</div>
+<h2 class="section-title">Starr AI in three steps</h2>
+<p class="section-desc">No account. No subscription. No Wi-Fi needed.</p>
+<div class="how-grid">
+<div class="how-step"><div class="step-num">1</div><h4>Download once</h4><p>Starr AI downloads its model over Wi-Fi one time. After that, everything runs on-device.</p></div>
+<div class="how-step"><div class="step-num">2</div><h4>Go anywhere</h4><p>On a plane, in the mountains, off the grid — Starr works wherever you are.</p></div>
+<div class="how-step"><div class="step-num">3</div><h4>Just ask</h4><p>Translate languages, get travel tips, look things up. Your AI, always available.</p></div>
+</div>
+</section>
+<footer>
+<div class="social-links">
+<a href="https://x.com/QStarrAI" target="_blank">X (Twitter)</a>
+<a href="https://apps.apple.com/us/app/starr-ai/id6760642346" target="_blank">Starr AI</a>
+<a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" target="_blank">Sun Light</a>
+</div>
+<p>© 2026 Q Starr. All rights reserved.</p>
+</footer>
+</body>
+</html>
