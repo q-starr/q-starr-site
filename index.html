@@ -52,40 +52,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-
 .o1{width:500px;height:500px;top:-12%;right:-8%;background:radial-gradient(circle,var(--sun-s),transparent 70%)}
 .o2{width:450px;height:450px;bottom:-8%;left:-6%;background:radial-gradient(circle,var(--ai-s),transparent 70%)}
 .hc{position:relative;z-index:1;max-width:680px}
-.pill{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:5px 14px 5px 10px;border-radius:999px;font-size:.95rem;color:var(--muted);margin-bottom:32px;animation:fu .6s ease both}
-.dot{width:6px;height:6px;border-radius:50%;background:#34D399;box-shadow:0 0 6px rgba(52,211,153,.4)}
 h1{font-family:var(--serif);font-size:clamp(2.4rem,5.5vw,3.8rem);font-weight:400;font-style:italic;line-height:1.15;letter-spacing:-.02em;margin-bottom:22px;animation:fu .6s ease .1s both}
 .c-s{color:var(--sun)}.c-a{color:var(--ai)}
 .hp{font-size:1.2rem;color:var(--muted);line-height:1.7;max-width:580px;margin:0 auto 32px;animation:fu .6s ease .2s both}
-.hp-list{list-style:none;padding:0;margin:0 auto 32px;max-width:620px;text-align:left;font-size:1.1rem;color:var(--muted);line-height:1.7}
-.hp-list li{padding-left:1.2em;position:relative;margin-bottom:12px}
-.hp-list li::before{content:"\2022";position:absolute;left:0;color:var(--sun)}
 
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto;padding:0 28px 80px;animation:fu .6s ease .3s both}
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 32px;display:flex;flex-direction:column;transition:border-color .3s,box-shadow .3s,transform .3s}
 .card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.1)}
 .card.ca:hover{box-shadow:0 20px 60px -20px var(--ai-s)}
 .card.cs:hover{box-shadow:0 20px 60px -20px var(--sun-s)}
-.badge{display:inline-flex;align-self:flex-start;font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:6px;margin-bottom:18px}
-.ca .badge{background:rgba(91,184,219,.12);color:var(--ai)}
-.cs .badge{background:rgba(232,168,56,.12);color:var(--sun)}
 .card h2{font-family:var(--serif);font-style:italic;font-size:1.6rem;font-weight:400;margin-bottom:10px}
 .card>p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:24px;flex-grow:1}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600;font-size:1rem;transition:all .2s;align-self:flex-start}
 .btn-a{background:var(--ai);color:var(--bg)}.btn-a:hover{opacity:.9}
 .btn-s{background:var(--sun);color:var(--bg)}.btn-s:hover{opacity:.9}
-
-/* Together section */
-.together{max-width:960px;margin:0 auto;padding:0 28px 100px}
-.together-inner{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px 40px;text-align:center}
-.together-icons{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:24px}
-.together-icons img{width:48px;height:48px;border-radius:12px}
-.together-icons .plus{color:var(--dim);font-size:1.2rem;font-weight:300}
-.together h2{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3vw,2rem);font-weight:400;margin-bottom:14px}
-.together-desc{color:var(--muted);font-size:1.05rem;line-height:1.7;max-width:640px;margin:0 auto}
-.together-list{list-style:none;padding:0;margin:24px auto 0;max-width:640px;text-align:left;font-size:.95rem;color:var(--muted);line-height:1.7}
-.together-list li{padding-left:1.2em;position:relative;margin-bottom:10px;font-size:1.05rem}
-.together-list li::before{content:"\2022";position:absolute;left:0;color:var(--sun)}
 
 footer{border-top:1px solid var(--border);padding:36px 28px;text-align:center}
 footer span{color:var(--dim);font-size:.84rem}
@@ -93,7 +73,7 @@ footer a{color:var(--muted);text-decoration:none;font-size:.84rem;margin:0 10px}
 footer a:hover{color:var(--text)}
 
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:640px){.cards{grid-template-columns:1fr}.together-inner{padding:32px 24px}[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
 
 .app-icon{width:48px;height:48px;border-radius:12px;object-fit:cover}
 .card-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
@@ -108,7 +88,6 @@ footer a:hover{color:var(--text)}
 .watch-flow-item img:hover{transform:translateY(-4px)}
 .watch-flow-arrow{color:var(--ai);font-size:1.4rem;opacity:.5;padding:0 12px;flex-shrink:0;line-height:1}
 .watch-flow-dot{color:var(--sun);font-size:1.8rem;opacity:.3;padding:0 20px;flex-shrink:0;line-height:1}
-.watch-flow-label{font-size:.84rem;color:var(--dim);margin-top:10px;text-align:center}
 .watch-section-label{color:var(--muted);font-size:1.05rem;margin-top:10px;max-width:520px;display:inline-block;line-height:1.7}
 .watch-app-title{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px}
 .watch-app-title img{width:40px;height:40px;border-radius:10px}
@@ -120,11 +99,6 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
 .dl-btns .btn{padding:16px 32px;font-size:1.05rem}
 
 @media(max-width:520px){.watch-flow{gap:0}.watch-flow-item img{width:100px;height:120px;border-radius:26px}.watch-flow-arrow{font-size:1rem;padding:0 6px}.watch-flow-dot{padding:0 10px;font-size:1.2rem}}
-
-/* SIMPLE SECTIONS */
-.simple-section{max-width:960px;margin:0 auto;padding:60px 28px}
-.simple-section h2{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3vw,2rem);font-weight:400;margin-bottom:14px}
-.simple-section p{color:var(--muted);font-size:1.1rem;line-height:1.7;max-width:600px;margin-bottom:16px}
 
 .rv{opacity:0;transform:translateY(20px);transition:all .65s cubic-bezier(.16,1,.3,1)}
 .rv.vis{opacity:1;transform:translateY(0)}
@@ -163,16 +137,16 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
         <div class="watch-flow-item">
           <img src="/images/starr-ai/Starr_Watch_Home.png" alt="Starr AI on Apple Watch — Ask me anything">
         </div>
-        <div class="watch-flow-arrow">→</div>
+        <div class="watch-flow-arrow">&rarr;</div>
         <div class="watch-flow-item">
           <img src="/images/starr-ai/Starr_Watch_TextInput.png" alt="Typing a question on Apple Watch">
         </div>
-        <div class="watch-flow-arrow">→</div>
+        <div class="watch-flow-arrow">&rarr;</div>
         <div class="watch-flow-item">
           <img src="/images/starr-ai/Starr_Watch_NYCResponse.png" alt="Starr AI response about New York City">
         </div>
       </div>
-      <p class="watch-section-label">Ask anything → Speak → Get answers directly from your Apple Watch.</p>
+      <p class="watch-section-label">Starr AI &mdash; Ask anything and get answers directly from your Apple Watch.</p>
     </div>
 
     <!-- Sun Light Watch Flow -->
@@ -190,7 +164,7 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
           <img src="/images/sun-light/watch-pyramid.PNG" alt="Sun Light pyramid on Apple Watch">
         </div>
       </div>
-      <p class="watch-section-label">See your daily sunlight progress at a glance.</p>
+      <p class="watch-section-label">Sun Light &mdash; See your daily sunlight progress at a glance.</p>
     </div>
   </div>
 </section>
@@ -204,8 +178,7 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
           <img src="/starr-ai/icon_1024x1024.png" class="app-icon" alt="Starr AI">
           <h2 style="margin-bottom:0">Starr AI</h2>
         </div>
-        <p style="color:var(--text);font-size:1.05rem;margin-top:10px;margin-bottom:8px">Your own AI that lives on your iPhone.</p>
-        <p>Quick answers, translations, and everyday help — easy and always available. Just raise your wrist and ask.</p>
+        <p>Your own AI that lives on your iPhone. Quick answers, translations, and everyday help &mdash; even offline.</p>
         <a href="/starr-ai" class="btn btn-a" style="margin-top:16px;align-self:center">Learn more &rarr;</a>
       </div>
       <div class="card cs" style="text-align:center">
@@ -213,8 +186,7 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
           <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" class="app-icon" alt="Sun Light">
           <h2 style="margin-bottom:0">Sun Light</h2>
         </div>
-        <p style="color:var(--text);font-size:1.05rem;margin-top:10px;margin-bottom:8px">Natural sunlight tracking on your Apple Watch.</p>
-        <p>Raise your wrist to see your daily light progress and how it gently supports your energy and sleep.</p>
+        <p>Natural sunlight tracking on your Apple Watch. Raise your wrist to see your daily light progress and how it gently supports your energy and mood.</p>
         <a href="/sun-light" class="btn btn-s" style="margin-top:16px;align-self:center">Learn more &rarr;</a>
       </div>
     </div>
@@ -229,7 +201,7 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
       <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--sun)">&#10003;</span> Fast, easy help whenever you need it</li>
       <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--sun)">&#10003;</span> Natural light that boosts mood and steady energy</li>
       <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--sun)">&#10003;</span> Works reliably even without internet</li>
-      <li style="font-size:1.05rem;color:var(--text);margin-bottom:0;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--sun)">&#10003;</span> Simple with no accounts or subscriptions</li>
+      <li style="font-size:1.05rem;color:var(--text);margin-bottom:0;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--sun)">&#10003;</span> No accounts or subscriptions</li>
     </ul>
     <p style="color:var(--muted);font-size:1.05rem;margin-top:24px">Both apps run completely on your devices. No Wi-Fi required.</p>
   </div>
@@ -253,10 +225,9 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
 </section>
 
 <footer>
-  <span>&copy; 2026 Starr Apps</span>
+  <span>&copy; 2026 Q Starr LLC</span>
   <a href="/privacy">Privacy</a>
   <a href="/terms">Terms</a>
-  <a href="https://x.com/QStarrAI">X</a>
 </footer>
 <script>
 const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.1});
