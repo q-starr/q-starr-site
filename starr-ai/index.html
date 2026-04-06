@@ -159,6 +159,20 @@ footer a:hover{color:var(--text)}
   .nav-r a:not(.nav-dl){display:none}
 }
 .nav-icon{width:20px;height:20px;border-radius:5px;vertical-align:middle;margin-right:4px;outline:1px solid var(--bg)}
+
+/* WATCH FLOW */
+.watch-flow{display:flex;align-items:center;justify-content:center;gap:0;margin:40px auto 32px;max-width:700px;flex-wrap:nowrap}
+.watch-flow-item{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.watch-flow-item img{width:140px;height:168px;border-radius:36px;object-fit:cover;border:1px solid var(--border);transition:transform .3s}
+.watch-flow-item img:hover{transform:translateY(-4px)}
+.watch-flow-arrow{color:var(--sun);font-size:1.4rem;opacity:.5;padding:0 12px;flex-shrink:0;line-height:1}
+.watch-flow-caption{text-align:center;margin-top:8px}
+.watch-flow-caption h3{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.6rem);margin-bottom:8px}
+.watch-flow-caption p{color:var(--muted);font-size:.88rem}
+.watch-flow-steps{list-style:none;padding:0;margin:24px auto 0;max-width:480px;text-align:left}
+.watch-flow-steps li{color:var(--muted);font-size:.92rem;line-height:1.7;padding-left:2em;position:relative;margin-bottom:8px}
+.watch-flow-steps li .step-num{position:absolute;left:0;color:var(--sun);font-weight:600;font-size:.85rem;width:1.6em;text-align:center}
+@media(max-width:520px){.watch-flow{gap:0}.watch-flow-item img{width:100px;height:120px;border-radius:26px}.watch-flow-arrow{font-size:1rem;padding:0 6px}}
 </style>
 </head>
 <body>
@@ -185,6 +199,34 @@ footer a:hover{color:var(--text)}
       </a>
       <a href="#compare" class="btn btn-g">See how it compares ↓</a>
     </div>
+  </div>
+</section>
+
+<!-- WATCH EXPERIENCE -->
+<section style="padding-top:0;padding-bottom:48px">
+  <div class="wrap" style="text-align:center">
+    <div class="watch-flow-caption">
+      <h3>Ask. Speak. Get answers — right on your wrist.</h3>
+    </div>
+    <div class="watch-flow rv">
+      <div class="watch-flow-item">
+        <img src="/images/starr-ai/Starr_Watch_Home.png" alt="Starr AI on Apple Watch — Ask me anything">
+      </div>
+      <div class="watch-flow-arrow">→</div>
+      <div class="watch-flow-item">
+        <img src="/images/starr-ai/Starr_Watch_TextInput.png" alt="Typing a question on Apple Watch">
+      </div>
+      <div class="watch-flow-arrow">→</div>
+      <div class="watch-flow-item">
+        <img src="/images/starr-ai/Starr_Watch_NYCResponse.png" alt="Starr AI response about New York City on Apple Watch">
+      </div>
+    </div>
+    <ul class="watch-flow-steps rv">
+      <li><span class="step-num">1.</span>Raise your wrist and ask anything</li>
+      <li><span class="step-num">2.</span>Speak naturally (or type if you prefer)</li>
+      <li><span class="step-num">3.</span>Get fast, helpful responses — even offline</li>
+    </ul>
+    <p style="color:var(--dim);font-size:.84rem;margin-top:20px">This experience works completely on-device. No cloud. No waiting for a connection.</p>
   </div>
 </section>
 
