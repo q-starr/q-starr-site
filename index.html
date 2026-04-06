@@ -5,6 +5,7 @@
 <link rel="icon" type="image/png" href="/images/AppIcon-1024_1.png">
 <link rel="apple-touch-icon" href="/images/AppIcon-1024_1.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08090C">
 <title>Starr Apps — Your own AI on your phone. Your Apple Watch measures real sunlight.</title>
 <meta name="description" content="Your own AI on your iPhone that you can talk to from your Apple Watch, plus natural sunlight tracking on your wrist. Simple tools that just help you feel better every day.">
 <meta property="og:title" content="Starr Apps — Helpful AI & Sunlight Tracking">
@@ -35,8 +36,8 @@
   --sans:'DM Sans',-apple-system,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:20px;line-height:1.65}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:20px;line-height:1.65;min-height:100vh}
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,9,12,0.8);border-bottom:1px solid var(--border)}
 .nav-i{max-width:960px;margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
@@ -96,7 +97,8 @@ footer a:hover{color:var(--text)}
 
 .app-icon{width:48px;height:48px;border-radius:12px;object-fit:cover}
 .card-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
-.nav-icon{width:28px;height:28px;border-radius:7px;vertical-align:middle;margin-right:4px;outline:1px solid var(--bg)}
+.nav-icon{width:28px;height:28px;border-radius:7px;vertical-align:middle;margin-right:6px}
+@media(max-width:640px){.logo{font-size:1.25rem}.nav-icon{width:22px;height:22px;border-radius:5px;margin-right:4px}.nav-r{gap:10px}.nav-r a{font-size:.82rem}}
 .hero-icon{width:clamp(160px,22vw,240px);height:auto;border-radius:36px;display:block;margin:0 auto 36px;animation:fu .6s ease both}
 
 /* WATCH FLOW */
