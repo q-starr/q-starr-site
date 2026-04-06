@@ -75,7 +75,8 @@ footer a:hover{color:var(--text)}
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:640px){.cards{grid-template-columns:1fr}.nav-r a:first-child{display:none}}
 
-.app-icon{width:48px;height:48px;border-radius:12px;object-fit:cover;margin-bottom:14px}
+.app-icon{width:48px;height:48px;border-radius:12px;object-fit:cover}
+.card-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 .nav-icon{width:20px;height:20px;border-radius:5px;vertical-align:middle;margin-right:4px;outline:1px solid var(--bg)}
 .hero-icon{width:clamp(160px,22vw,240px);height:auto;border-radius:36px;display:block;margin:0 auto 36px;animation:fu .6s ease both}
 </style>
@@ -106,16 +107,20 @@ footer a:hover{color:var(--text)}
 
 <div class="cards">
   <div class="card ca">
-    <img src="/starr-ai/icon_1024x1024.png" class="app-icon" alt="Starr AI">
+    <div class="card-header">
+      <img src="/starr-ai/icon_1024x1024.png" class="app-icon" alt="Starr AI">
+      <h2>Starr AI</h2>
+    </div>
     <div class="badge">AI Assistant</div>
-    <h2>Starr AI</h2>
     <p>A real AI that runs entirely on your iPhone. Download the model once, then use it anywhere — planes, mountains, abroad. No internet, no account, no subscription.</p>
     <a href="/starr-ai" class="btn btn-a">Learn more &rarr;</a>
   </div>
   <div class="card cs">
-    <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" class="app-icon" alt="Sun Light">
+    <div class="card-header">
+      <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" class="app-icon" alt="Sun Light">
+      <h2>Sun Light</h2>
+    </div>
     <div class="badge">Health + Wellness</div>
-    <h2>Sun Light</h2>
     <p>Your Apple Watch already measures daylight. Sun Light turns that into a daily goal, streaks, time-of-day breakdowns, and a Circadian Score you can act on.</p>
     <a href="/sun-light" class="btn btn-s">Learn more &rarr;</a>
   </div>
