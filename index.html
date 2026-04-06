@@ -43,17 +43,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-
 .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.45;pointer-events:none}
 .o1{width:500px;height:500px;top:-12%;right:-8%;background:radial-gradient(circle,var(--sun-s),transparent 70%)}
 .o2{width:450px;height:450px;bottom:-8%;left:-6%;background:radial-gradient(circle,var(--ai-s),transparent 70%)}
-.hc{position:relative;z-index:1;max-width:620px}
+.hc{position:relative;z-index:1;max-width:680px}
 .pill{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:5px 14px 5px 10px;border-radius:999px;font-size:.88rem;color:var(--muted);margin-bottom:32px;animation:fu .6s ease both}
 .dot{width:6px;height:6px;border-radius:50%;background:#34D399;box-shadow:0 0 6px rgba(52,211,153,.4)}
-h1{font-family:var(--serif);font-size:clamp(2.6rem,6vw,4.2rem);font-weight:400;font-style:italic;line-height:1.1;letter-spacing:-.02em;margin-bottom:22px;animation:fu .6s ease .1s both}
+h1{font-family:var(--serif);font-size:clamp(2.4rem,5.5vw,3.8rem);font-weight:400;font-style:italic;line-height:1.15;letter-spacing:-.02em;margin-bottom:22px;animation:fu .6s ease .1s both}
 .c-s{color:var(--sun)}.c-a{color:var(--ai)}
-.hp{font-size:1.15rem;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto 40px;animation:fu .6s ease .2s both}
-      .hp-list{list-style:none;padding:0;margin:16px auto 0;max-width:620px;text-align:left;font-size:1.05rem;color:var(--muted);line-height:1.7}
-      .hp-list li{padding-left:1.2em;position:relative;margin-bottom:8px}
-      .hp-list li::before{content:"\2022";position:absolute;left:0;color:var(--sun)}
+.hp{font-size:1.1rem;color:var(--muted);line-height:1.7;max-width:580px;margin:0 auto 32px;animation:fu .6s ease .2s both}
+.hp-list{list-style:none;padding:0;margin:0 auto 32px;max-width:620px;text-align:left;font-size:1.02rem;color:var(--muted);line-height:1.7}
+.hp-list li{padding-left:1.2em;position:relative;margin-bottom:12px}
+.hp-list li::before{content:"\2022";position:absolute;left:0;color:var(--sun)}
 
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto;padding:0 28px 120px;animation:fu .6s ease .3s both}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto;padding:0 28px 80px;animation:fu .6s ease .3s both}
 .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 32px;display:flex;flex-direction:column;transition:border-color .3s,box-shadow .3s,transform .3s}
 .card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.1)}
 .card.ca:hover{box-shadow:0 20px 60px -20px var(--ai-s)}
@@ -67,13 +67,25 @@ h1{font-family:var(--serif);font-size:clamp(2.6rem,6vw,4.2rem);font-weight:400;f
 .btn-a{background:var(--ai);color:var(--bg)}.btn-a:hover{opacity:.9}
 .btn-s{background:var(--sun);color:var(--bg)}.btn-s:hover{opacity:.9}
 
+/* Together section */
+.together{max-width:960px;margin:0 auto;padding:0 28px 100px}
+.together-inner{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:48px 40px;text-align:center}
+.together-icons{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:24px}
+.together-icons img{width:48px;height:48px;border-radius:12px}
+.together-icons .plus{color:var(--dim);font-size:1.2rem;font-weight:300}
+.together h2{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3vw,2rem);font-weight:400;margin-bottom:14px}
+.together-desc{color:var(--muted);font-size:.95rem;line-height:1.7;max-width:640px;margin:0 auto}
+.together-list{list-style:none;padding:0;margin:24px auto 0;max-width:640px;text-align:left;font-size:.95rem;color:var(--muted);line-height:1.7}
+.together-list li{padding-left:1.2em;position:relative;margin-bottom:10px}
+.together-list li::before{content:"\2022";position:absolute;left:0;color:var(--sun)}
+
 footer{border-top:1px solid var(--border);padding:36px 28px;text-align:center}
 footer span{color:var(--dim);font-size:.78rem}
 footer a{color:var(--muted);text-decoration:none;font-size:.78rem;margin:0 10px}
 footer a:hover{color:var(--text)}
 
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:640px){.cards{grid-template-columns:1fr}.nav-r a:first-child{display:none}}
+@media(max-width:640px){.cards{grid-template-columns:1fr}.nav-r a:first-child{display:none}.together-inner{padding:32px 24px}}
 
 .app-icon{width:48px;height:48px;border-radius:12px;object-fit:cover}
 .card-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
@@ -95,13 +107,13 @@ footer a:hover{color:var(--text)}
   <div class="hc">
     <img src="/images/AppIcon-1024_1.png" class="hero-icon" alt="Starr Apps">
     <div class="pill"><div class="dot"></div>Free on the App Store</div>
-    <h1>Your own <span class="c-a">AI</span> on your phone.<br>Your Apple Watch measures real <span class="c-s">sunlight</span>.</h1>
-    <p class="hp">Meet the pair of apps that put a helpful AI assistant in your pocket and turn your Apple Watch into a natural sunlight tracker.</p>
+    <h1>Your own <span class="c-a">AI</span> on your iPhone — reachable from your Apple Watch.<br>Your Apple Watch gently measures real <span class="c-s">sunlight</span>.</h1>
+    <p class="hp">Two helpful, independent apps designed to make your devices more useful in everyday life:</p>
     <ul class="hp-list">
-      <li>The <strong>Starr AI</strong> app runs 100% on your phone: fast, local, and completely yours.</li>
-      <li>The <strong>Sun Light</strong> app uses your Apple Watch’s ambient light sensor to track time in daylight, helping support vitamin D, circadian health, mood, and better sleep.</li>
+      <li><strong>Starr AI</strong> gives you a fast, fully offline AI assistant that lives on your phone and lets you ask questions right from your wrist.</li>
+      <li><strong>Sun Light</strong> turns your Apple Watch into a natural sunlight tracker, helping you build better daily light habits for improved energy, mood, and sleep.</li>
     </ul>
-    <p class="hp">No accounts. No Wi‑Fi required. Just helpful tools made for you.</p>
+    <p class="hp">No accounts. No Wi-Fi required. Just simple tools made for real life.</p>
   </div>
 </section>
 
@@ -112,7 +124,7 @@ footer a:hover{color:var(--text)}
       <h2>Starr AI</h2>
     </div>
     <div class="badge">AI Assistant</div>
-    <p>A real AI that runs entirely on your iPhone. Download the model once, then use it anywhere — planes, mountains, abroad. No internet, no account, no subscription.</p>
+    <p>Your own helpful AI that runs entirely on your iPhone — and you can talk to it directly from your Apple Watch. Ask quick questions, get ideas, translate, or brainstorm anytime — even on planes, in the mountains, or abroad. Download the model once and it works offline with no internet, no account, and no subscription.</p>
     <a href="/starr-ai" class="btn btn-a">Learn more &rarr;</a>
   </div>
   <div class="card cs">
@@ -121,10 +133,27 @@ footer a:hover{color:var(--text)}
       <h2>Sun Light</h2>
     </div>
     <div class="badge">Health + Wellness</div>
-    <p>Your Apple Watch already measures daylight. Sun Light turns that into a daily goal, streaks, time-of-day breakdowns, and a Circadian Score you can act on.</p>
+    <p>Your Apple Watch already measures daylight. Sun Light turns that into simple daily sunlight goals, streaks, time-of-day breakdowns, and a Circadian Score — so you can naturally support better energy, mood, and deeper sleep.</p>
     <a href="/sun-light" class="btn btn-s">Learn more &rarr;</a>
   </div>
 </div>
+
+<section class="together">
+  <div class="together-inner">
+    <div class="together-icons">
+      <img src="/starr-ai/icon_1024x1024.png" alt="Starr AI">
+      <span class="plus">+</span>
+      <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" alt="Sun Light">
+    </div>
+    <h2>Made to complement each other</h2>
+    <p class="together-desc">Starr AI and Sun Light work independently but feel even better together.</p>
+    <ul class="together-list">
+      <li>Use <strong>Starr AI</strong> on your phone or Apple Watch for smart, private assistance whenever you need it — no cloud, no waiting.</li>
+      <li>Use <strong>Sun Light</strong> every day on your wrist to gently track real sunlight and build healthier light habits.</li>
+    </ul>
+    <p class="together-desc">Both apps respect your privacy completely, run locally, and require zero accounts or internet connection. Together they turn your iPhone and Apple Watch into a more capable, personal, and health-supporting system — without any compromises.</p>
+  </div>
+</section>
 
 <footer>
   <span>&copy; 2026 Starr Apps</span>
