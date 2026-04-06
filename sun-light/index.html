@@ -6,7 +6,7 @@
 <link rel="apple-touch-icon" href="/images/sun-light/SunLight_Icon_BrightYellow_1024.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sun Light — Sunlight Tracking for Apple Watch</title>
-<meta name="description" content="Sun Light turns your Apple Watch into a natural sunlight tracker. Get daily goals, streaks, and a Circadian Score to support better energy, mood, and sleep — all offline with no account needed.">
+<meta name="description" content="Sun Light turns your Apple Watch into a natural sunlight tracker. Get daily goals, beautiful progress visuals, and a Circadian Score to support better energy, mood, and sleep — all offline with no account needed.">
 <meta property="og:title" content="Your Apple Watch gently measures real sunlight.">
 <meta property="og:description" content="Sun Light turns your Apple Watch into a natural sunlight tracker. Get daily goals, streaks, and a Circadian Score to support better energy, mood, and sleep — all offline with no account needed.">
 <meta property="og:image" content="https://q-starr.app/images/sun-light/SunLight_Icon_BrightYellow_1024.png">
@@ -159,6 +159,18 @@ footer a:hover{color:var(--text)}
   .nav-r a:not(.nav-dl){display:none}
 }
 .nav-icon{width:22px;height:22px;border-radius:5px;vertical-align:middle;margin-right:4px;outline:1px solid var(--bg)}
+
+/* WATCH FLOW */
+.watch-flow{display:flex;align-items:center;justify-content:center;gap:0;margin:40px auto 32px;max-width:500px;flex-wrap:nowrap}
+.watch-flow-item{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.watch-flow-item img{width:160px;height:192px;border-radius:36px;object-fit:cover;border:1px solid var(--border);transition:transform .3s}
+.watch-flow-item img:hover{transform:translateY(-4px)}
+.watch-flow-label{font-size:.84rem;color:var(--dim);margin-top:10px;text-align:center}
+.watch-flow-dot{color:var(--sun);font-size:1.8rem;opacity:.3;padding:0 20px;flex-shrink:0;line-height:1}
+.watch-flow-caption{text-align:center;margin-top:8px}
+.watch-flow-caption h3{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.6rem);margin-bottom:8px}
+.watch-flow-caption p{color:var(--muted);font-size:1rem;line-height:1.7;max-width:540px;margin:0 auto}
+@media(max-width:520px){.watch-flow-item img{width:120px;height:144px;border-radius:28px}.watch-flow-dot{padding:0 10px;font-size:1.2rem}}
 </style>
 </head>
 <body>
@@ -177,7 +189,7 @@ footer a:hover{color:var(--text)}
   <div class="hero-i">
     <div class="tag">Sun Light</div>
     <h1>Your Apple Watch gently measures real sunlight.</h1>
-    <p class="hero-sub">Turn your everyday daylight exposure into simple, actionable insights that support better energy, mood, and sleep.</p>
+    <p class="hero-sub">Turn your everyday daylight into simple, motivating insights that support better energy, mood, and sleep.</p>
     <div class="hero-btns">
       <a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" class="btn btn-sun">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
@@ -188,13 +200,35 @@ footer a:hover{color:var(--text)}
   </div>
 </section>
 
+<!-- WATCH EXPERIENCE -->
+<section style="padding-top:0;padding-bottom:48px">
+  <div class="wrap" style="text-align:center">
+    <div class="watch-flow-caption">
+      <h3>See your sunlight progress at a glance — right on your wrist.</h3>
+    </div>
+    <div class="watch-flow rv">
+      <div class="watch-flow-item">
+        <img src="/images/sun-light/watch-ring.PNG" alt="Sun Light on Apple Watch — progress ring showing 29 of 45 minutes">
+        <div class="watch-flow-label">Daily progress ring</div>
+      </div>
+      <div class="watch-flow-dot">&#183;</div>
+      <div class="watch-flow-item">
+        <img src="/images/sun-light/watch-pyramid.PNG" alt="Sun Light on Apple Watch — pyramid animation at 64% of goal">
+        <div class="watch-flow-label">Circadian goal pyramid</div>
+      </div>
+    </div>
+    <p class="watch-flow-caption" style="margin-top:24px">
+      <span style="color:var(--muted);font-size:1rem;line-height:1.7;display:block;max-width:540px;margin:0 auto">Raise your wrist anytime to see how much healthy daylight you've received today, how close you are to your goal, and a beautiful visual of your light patterns. Simple, gentle, and always available.</span>
+    </p>
+  </div>
+</section>
+
 <!-- MAIN DESCRIPTION -->
 <section style="padding-top:0;padding-bottom:40px">
   <div class="wrap">
     <div class="sci-content">
-      <p><strong>Your Apple Watch already senses ambient light.</strong> Sun Light makes that data useful.</p>
-      <p>It transforms your watch's natural sunlight measurements into a gentle daily companion that helps you build healthier light habits — without any extra hardware.</p>
-      <p>Get daily sunlight goals, clean streaks, time-of-day breakdowns, and a Circadian Score you can actually act on.</p>
+      <p><strong>Your Apple Watch already senses ambient light throughout the day.</strong> Sun Light makes that data useful and motivating.</p>
+      <p>It quietly turns your natural sunlight exposure into daily goals, streaks, time-of-day breakdowns, and a Circadian Score — helping you build healthier light habits without any extra effort or hardware.</p>
     </div>
   </div>
 </section>
@@ -208,27 +242,27 @@ footer a:hover{color:var(--text)}
       <div class="feat">
         <div class="feat-ico">🎯</div>
         <h4>Daily Sunlight Goals</h4>
-        <p>Encourages healthy outdoor light exposure at the right times.</p>
+        <p>Encourages natural light at the right times of day.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">⭕</div>
+        <h4>Beautiful Progress Ring</h4>
+        <p>See your accumulated daylight in a simple circular view.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">🔺</div>
+        <h4>Circadian Pyramid</h4>
+        <p>Understand your light patterns with an elegant visual.</p>
       </div>
       <div class="feat">
         <div class="feat-ico">🔥</div>
-        <h4>Streaks &amp; Progress</h4>
-        <p>Builds a simple habit of getting natural daylight.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico">🧠</div>
-        <h4>Circadian Score</h4>
-        <p>See how well your light patterns support your body's natural rhythm.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-ico">🌅</div>
-        <h4>Time-of-Day Insights</h4>
-        <p>Understand when you're getting morning light vs. afternoon/evening light.</p>
+        <h4>Streaks &amp; Motivation</h4>
+        <p>Build consistent habits that support mood and sleep.</p>
       </div>
       <div class="feat">
         <div class="feat-ico">⌚</div>
-        <h4>Works entirely on your Apple Watch</h4>
-        <p>No phone required for tracking.</p>
+        <h4>Works quietly on your wrist</h4>
+        <p>No manual logging, no extra sensors needed.</p>
       </div>
     </div>
   </div>
@@ -355,25 +389,26 @@ footer a:hover{color:var(--text)}
     <div class="feat-grid rv">
       <div class="feat">
         <div class="feat-ico">1️⃣</div>
-        <h4>Install Sun Light</h4>
-        <p>Download on your iPhone — it pairs automatically with your Apple Watch.</p>
+        <h4>Download Sun Light</h4>
+        <p>Install on your iPhone — it connects automatically to your Apple Watch.</p>
       </div>
       <div class="feat">
         <div class="feat-ico">2️⃣</div>
-        <h4>Wear your Apple Watch</h4>
-        <p>It quietly measures ambient light throughout the day. No buttons to press.</p>
+        <h4>Wear your Apple Watch as usual</h4>
+        <p>It quietly measures ambient light throughout the day.</p>
       </div>
       <div class="feat">
         <div class="feat-ico">3️⃣</div>
-        <h4>See your progress</h4>
-        <p>Open the app to see your daily sunlight total, streaks, and Circadian Score.</p>
+        <h4>Raise your wrist anytime</h4>
+        <p>Check your daily sunlight progress, streaks, and Circadian Score.</p>
       </div>
       <div class="feat">
         <div class="feat-ico">4️⃣</div>
-        <h4>Adjust your routine</h4>
-        <p>Use the gentle insights to improve your habits — a morning walk, lunch outside, or an evening stroll.</p>
+        <h4>Adjust small habits</h4>
+        <p>Use the gentle insights to get more morning light, lunch outside, or an evening wind-down.</p>
       </div>
     </div>
+    <p style="color:var(--dim);font-size:.92rem;margin-top:20px;text-align:center">Everything happens locally on your devices. No internet required for tracking.</p>
   </div>
 </section>
 
@@ -386,23 +421,23 @@ footer a:hover{color:var(--text)}
     <div class="feat-grid rv">
       <div class="feat">
         <div class="feat-ico">⚡</div>
-        <h4>Improving morning energy</h4>
-        <p>Reduce afternoon slumps by getting the right light at the right time.</p>
+        <h4>Starting the day with more energy</h4>
+        <p>Morning light naturally reduces afternoon slumps and grogginess.</p>
       </div>
       <div class="feat">
         <div class="feat-ico">😴</div>
-        <h4>Better sleep</h4>
-        <p>Support healthier circadian rhythms through consistent light exposure.</p>
+        <h4>Supporting better sleep</h4>
+        <p>Healthier circadian rhythms through consistent light exposure.</p>
       </div>
       <div class="feat">
         <div class="feat-ico">🌿</div>
-        <h4>Building a light habit</h4>
+        <h4>Building a simple outdoor habit</h4>
         <p>Consistent outdoor light, tracked and encouraged with streaks and goals.</p>
       </div>
       <div class="feat">
         <div class="feat-ico">🧘</div>
-        <h4>Simple, science-backed awareness</h4>
-        <p>Anyone who wants gentle light awareness without complexity.</p>
+        <h4>Science-backed light awareness</h4>
+        <p>Anyone who wants gentle, evidence-based wellness without complexity.</p>
       </div>
     </div>
   </div>
@@ -480,8 +515,8 @@ footer a:hover{color:var(--text)}
 <!-- CTA -->
 <section class="cta dt">
   <div class="wrap" style="max-width:540px">
-    <h2>Ready to make your Apple Watch sunlight-aware?</h2>
-    <p class="sdesc">Download Sun Light for free and start seeing how natural daylight can improve how you feel.</p>
+    <h2>Ready to turn your Apple Watch into a gentle sunlight companion?</h2>
+    <p class="sdesc">Download Sun Light for free and start seeing how natural daylight can help you feel better every day.</p>
     <div class="cta-btns">
       <a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" class="btn btn-sun">
         <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
