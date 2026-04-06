@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sun Light — Sunlight Tracking for Apple Watch</title>
+<meta name="description" content="Track your daily sunlight exposure with Apple Watch. Morning light improves sleep, mood, and focus. Free on the App Store.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#08090C;--card:#0F1114;--card2:#141619;--border:rgba(255,255,255,0.05);
+  --text:#EAECF0;--muted:#9197A3;--dim:#5C6370;
+  --sun:#E8A838;--sun-s:rgba(232,168,56,0.08);--sun-m:rgba(232,168,56,0.15);
+  --green:#34D399;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',-apple-system,sans-serif;
+  --mono:'DM Mono',monospace;
+  --max:960px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.7;overflow-x:hidden;font-size:17px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,9,12,0.8);border-bottom:1px solid var(--border)}
+.nav-i{max-width:var(--max);margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:1.35rem;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--sun)}
+.nav-r{display:flex;gap:20px;align-items:center}
+.nav-r a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s}
+.nav-r a:hover{color:var(--text)}
+.nav-dl{background:var(--sun)!important;color:var(--bg)!important;padding:7px 16px!important;border-radius:8px;font-weight:600!important}
+
+.hero{padding:130px 28px 80px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,var(--sun-s),transparent 65%);pointer-events:none;filter:blur(60px)}
+.hero-i{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+.tag{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--sun);margin-bottom:14px}
+.tag-n{color:var(--dim)}
+.hero h1{font-family:var(--serif);font-size:clamp(2.4rem,5.5vw,3.6rem);font-weight:400;font-style:italic;line-height:1.1;letter-spacing:-.02em;margin-bottom:20px}
+.hero-sub{font-size:1.15rem;color:var(--muted);line-height:1.7;max-width:540px;margin-bottom:36px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.92rem;transition:all .2s;border:none;cursor:pointer}
+.btn-sun{background:var(--sun);color:var(--bg)}.btn-sun:hover{opacity:.9;transform:translateY(-1px)}
+.btn-g{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.12)}.btn-g:hover{background:var(--card)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-btns svg{width:16px;height:16px}
+
+section{padding:80px 28px}
+.wrap{max-width:var(--max);margin:0 auto}
+.dt{border-top:1px solid var(--border)}
+h2{font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:400;font-style:italic;line-height:1.15;letter-spacing:-.015em;margin-bottom:14px}
+h3{font-family:var(--serif);font-size:1.4rem;font-weight:400;font-style:italic;margin-bottom:10px}
+.sdesc{color:var(--muted);font-size:1.08rem;max-width:520px;line-height:1.7;margin-bottom:48px}
+
+/* SCIENCE CONTENT */
+.sci-content{max-width:680px}
+.sci-content p{color:var(--muted);font-size:.95rem;line-height:1.8;margin-bottom:20px}
+.sci-content p strong{color:var(--text);font-weight:500}
+
+.callout{background:var(--sun-s);border-left:3px solid var(--sun);border-radius:0 8px 8px 0;padding:20px 24px;margin:28px 0;font-size:.92rem;color:var(--text);line-height:1.7}
+.callout strong{color:var(--sun)}
+
+.evidence-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:40px 0}
+.ev-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 20px}
+.ev-card h4{font-size:.92rem;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.ev-card p{color:var(--muted);font-size:.84rem;line-height:1.65}
+.ev-source{font-size:.75rem;color:var(--dim);margin-top:10px;font-family:var(--mono)}
+
+/* HOW MUCH TABLE */
+.rec-table{width:100%;border-collapse:collapse;margin:8px 0;font-size:.88rem}
+.rec-table th{text-align:left;padding:12px 16px;font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);border-bottom:1px solid var(--border)}
+.rec-table td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--muted)}
+.rec-table td:first-child{color:var(--text);font-weight:500}
+.rec-table tr:last-child td{border-bottom:none}
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px}
+.tbl-note{font-size:.78rem;color:var(--dim);font-style:italic}
+
+/* FEATURES */
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+.feat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;transition:border-color .3s}
+.feat:hover{border-color:rgba(232,168,56,.15)}
+.feat-ico{font-size:1.3rem;margin-bottom:12px}
+.feat h4{font-size:.95rem;font-weight:600;margin-bottom:6px}
+.feat p{color:var(--muted);font-size:.86rem;line-height:1.6}
+
+/* PRO */
+.pro-section{background:linear-gradient(180deg,var(--bg),rgba(232,168,56,.015))}
+.pro-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+.pro-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px 28px}
+.pro-card h4{font-size:1rem;font-weight:600;margin-bottom:8px;color:var(--sun)}
+.pro-card p{color:var(--muted);font-size:.88rem;line-height:1.65}
+.free-vs{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.fv-col h4{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+.fv-col.free h4{color:var(--green)}
+.fv-col.pro h4{color:var(--sun)}
+.fv-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.fv-list li{color:var(--muted);font-size:.86rem;display:flex;align-items:center;gap:8px}
+.fv-list li::before{content:'✓';font-size:.75rem;flex-shrink:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.free .fv-list li::before{background:rgba(52,211,153,.12);color:var(--green)}
+.pro .fv-list li::before{background:var(--sun-m);color:var(--sun)}
+
+/* FAQ */
+.faq-list{max-width:680px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--sans);font-size:.98rem;font-weight:600;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s}
+.faq-q:hover{color:var(--sun)}
+.faq-q .arr{transition:transform .3s;font-size:.7rem;color:var(--dim)}
+.faq-item.open .arr{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-i{padding-bottom:20px;color:var(--muted);font-size:.88rem;line-height:1.7}
+
+.cta{text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,var(--sun-s),transparent 60%);pointer-events:none}
+.cta .wrap{position:relative;z-index:1}
+.cta h2,.cta .sdesc{text-align:center}
+.cta .sdesc{margin:0 auto 28px}
+.cta-btns{display:flex;gap:14px;justify-content:center}
+
+footer{border-top:1px solid var(--border);padding:36px 28px;text-align:center}
+footer span{color:var(--dim);font-size:.78rem}
+footer a{color:var(--muted);text-decoration:none;font-size:.78rem;margin:0 10px}
+footer a:hover{color:var(--text)}
+
+/* SCREENSHOTS */
+.screenshots{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:56px;padding:0 28px}
+.phone{width:220px;height:460px;background:var(--card);border:1px solid var(--border);border-radius:32px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:transform .3s}
+.phone:hover{transform:translateY(-4px)}
+.phone img{width:100%;height:100%;object-fit:cover;border-radius:32px}
+.phone .placeholder{color:var(--dim);font-size:.85rem;text-align:center;line-height:1.5}
+.phone .placeholder span{display:block;font-size:1.6rem;margin-bottom:6px}
+
+.rv{opacity:0;transform:translateY(20px);transition:all .65s cubic-bezier(.16,1,.3,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .evidence-grid,.feat-grid,.pro-grid,.free-vs{grid-template-columns:1fr}
+  .nav-r a:not(.nav-dl){display:none}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-i">
+  <a href="/" class="logo">Sun <em>Light</em></a>
+  <div class="nav-r">
+    <a href="/">Home</a>
+    <a href="/starr-ai">Starr AI</a>
+    <a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" class="nav-dl">Download</a>
+  </div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-i">
+    <div class="tag">Sunlight Tracking for Apple Watch</div>
+    <h1>Feel better. Sleep deeper. Start with sunlight.</h1>
+    <p class="hero-sub">Morning sunlight is one of the simplest things you can do for your energy, mood, and sleep. Sun Light tracks it automatically with your Apple Watch — so you can see exactly how much you're getting and build a habit that sticks.</p>
+    <div class="hero-btns">
+      <a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" class="btn btn-sun">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
+        App Store — Free
+      </a>
+      <a href="#science" class="btn btn-g">Read the science ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="screenshots rv">
+      <div class="phone">
+        <img src="/images/sun-light/ring.png" alt="Sun Light daily progress ring showing goal reached">
+      </div>
+      <div class="phone">
+        <img src="/images/sun-light/breakdown.png" alt="Sun Light time-of-day breakdown showing morning, afternoon, evening splits">
+      </div>
+      <div class="phone">
+        <img src="/images/sun-light/history.png" alt="Sun Light weekly history and streak tracking">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SCIENCE -->
+<section id="science" class="dt">
+  <div class="wrap">
+    <div class="tag">The Science</div>
+    <h2>What sunlight actually does for you</h2>
+
+    <div class="sci-content rv">
+      <p>
+        Your body runs on an internal clock called your <strong>circadian rhythm</strong>. Morning sunlight is the #1 signal that sets this clock — and when it's set right, everything downstream improves: energy, sleep, mood, focus, even your immune system.
+      </p>
+      <p>
+        The best part? It's simple. <strong>10–30 minutes of outdoor light in the morning</strong> is enough to make a real difference. Overcast days still work — outdoor light is 10–50x brighter than indoor lighting, even through clouds.
+      </p>
+
+      <div class="callout">
+        <strong>The habit:</strong> Get outside for 10–30 minutes within the first couple hours of waking. No sunglasses needed (regular glasses are fine). That's it.
+      </div>
+    </div>
+
+    <div class="evidence-grid rv">
+      <div class="ev-card">
+        <h4>😴 Better Sleep</h4>
+        <p>Morning light helps your body produce melatonin at the right time, leading to faster sleep onset and deeper, more restorative sleep. People with morning light exposure sleep up to 46 minutes longer per night.</p>
+      </div>
+      <div class="ev-card">
+        <h4>⚡ More Energy</h4>
+        <p>Sunlight triggers a natural cortisol boost in the morning — the healthy kind that makes you feel alert and focused. Less grogginess, fewer afternoon crashes.</p>
+      </div>
+      <div class="ev-card">
+        <h4>🧠 Stronger Mood</h4>
+        <p>Bright light therapy is clinically proven for seasonal depression, and regular sunlight exposure has been shown to improve mood and reduce anxiety in everyday life.</p>
+      </div>
+      <div class="ev-card">
+        <h4>👁️ Healthier Eyes</h4>
+        <p>Growing research shows that outdoor light exposure significantly reduces the risk of myopia (nearsightedness), especially in children. About 60–90 minutes of outdoor time per day can cut risk by up to 50%.</p>
+      </div>
+      <div class="ev-card">
+        <h4>🦴 Vitamin D</h4>
+        <p>Sunlight is your body's primary source of Vitamin D, which supports bone health, immune function, and muscle recovery. Most people are deficient without regular outdoor time.</p>
+      </div>
+      <div class="ev-card">
+        <h4>🏃 Overall Health</h4>
+        <p>Regular sunlight exposure is linked to lower blood pressure, improved cardiovascular health, better immune function, and healthier circadian hormone patterns across the board.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW MUCH DO YOU NEED -->
+<section class="dt">
+  <div class="wrap">
+    <div class="tag">Guidelines</div>
+    <h2>How much sunlight do you need?</h2>
+    <p class="sdesc">There's no single number — it depends on the sky, the season, and how early you start. Here's a practical framework.</p>
+
+    <div class="tbl-wrap rv">
+      <table class="rec-table">
+        <thead><tr><th>Condition</th><th>Recommended Duration</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Clear morning sky</td><td>10–15 minutes</td><td>Direct sunlight is bright enough for fast ipRGC activation</td></tr>
+          <tr><td>Overcast / cloudy</td><td>20–30 minutes</td><td>Still 10–50x brighter than indoor light, but longer exposure helps</td></tr>
+          <tr><td>Through a window</td><td>Not effective</td><td>Glass filters UV and reduces intensity; go outside</td></tr>
+          <tr><td>Afternoon / evening</td><td>Bonus, not primary</td><td>Late-day light helps signal "day is ending" to your clock</td></tr>
+          <tr><td>Children (myopia)</td><td>60–90 minutes total</td><td>Outdoor time, not necessarily direct sun</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-note">Sun Light lets you set a custom daily goal and tracks your progress automatically. The default is 30 minutes — adjust based on your climate and lifestyle.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="dt">
+  <div class="wrap">
+    <div class="tag">Features</div>
+    <h2>What Sun Light tracks</h2>
+    <p class="sdesc">Your Apple Watch measures ambient light throughout the day. Sun Light reads this data and turns it into something useful.</p>
+
+    <div class="feat-grid rv">
+      <div class="feat">
+        <div class="feat-ico">⭕</div>
+        <h4>Daily Progress Ring</h4>
+        <p>A visual ring that fills as you hit your sunlight goal — like closing your Activity rings, but for light exposure.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">🔥</div>
+        <h4>Streaks</h4>
+        <p>Track consecutive days of hitting your goal. Build the habit with visible momentum.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">🌅</div>
+        <h4>Time-of-Day Breakdown</h4>
+        <p>See exactly when you're getting your light — morning, afternoon, evening — so you can optimize for the times that matter most.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">📱</div>
+        <h4>Widgets Everywhere</h4>
+        <p>Home Screen, Lock Screen, StandBy, and Apple Watch complications. Glanceable progress without opening the app.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">⌚</div>
+        <h4>Fully Automatic</h4>
+        <p>No buttons to press, no manual logging. Just wear your Apple Watch and Sun Light does the rest.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-ico">🎯</div>
+        <h4>Custom Goals</h4>
+        <p>Set your own daily sunlight target. Default is 30 minutes — adjust based on your climate, season, and schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE VS PRO -->
+<section class="dt pro-section">
+  <div class="wrap">
+    <div class="tag">Sun Light Pro</div>
+    <h2>Go deeper with Pro</h2>
+    <p class="sdesc">The free version covers daily tracking. Pro adds the analytics and tools for people who want to optimize their circadian health.</p>
+
+    <div class="free-vs rv">
+      <div class="fv-col free">
+        <h4>Free — Forever</h4>
+        <ul class="fv-list">
+          <li>Daily sunlight tracking</li>
+          <li>Progress ring</li>
+          <li>Streak counter</li>
+          <li>Custom daily goal</li>
+          <li>Home Screen widget</li>
+          <li>Apple Watch app</li>
+        </ul>
+      </div>
+      <div class="fv-col pro">
+        <h4>Pro — Optional Upgrade</h4>
+        <ul class="fv-list">
+          <li>Circadian Score</li>
+          <li>Morning / afternoon / evening splits</li>
+          <li>Weekly and monthly trends</li>
+          <li>Grounding activity logger</li>
+          <li>Nutrition reference guide</li>
+          <li>All future Pro features</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="dt">
+  <div class="wrap">
+    <div class="tag tag-n">FAQ</div>
+    <h2>Common questions</h2>
+
+    <div class="faq-list rv">
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does the tracking work?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Sun Light reads ambient light data from your Apple Watch's built-in sensors via Apple Health. It measures "time in daylight" — the minutes you spend in bright outdoor light throughout the day. No manual input needed.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Which Apple Watches work?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Any Apple Watch running watchOS 10+ that supports ambient light sensing. Sun Light also works as a standalone watchOS app — no iPhone required while you're outside.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Does it work through windows?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">The Apple Watch sensor measures ambient light regardless of source, so it will register some light through windows. However, for circadian benefits you should aim for outdoor exposure — glass filters UV and significantly reduces intensity. Sun Light tracks what the sensor sees; the science says go outside.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">What's the Circadian Score?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">A Pro feature that combines your total sunlight, timing (morning vs afternoon), consistency, and streak into a single daily score. It's a quick way to see how well your light exposure aligns with optimal circadian health patterns.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is my data private?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Yes. Sun Light reads data from Apple Health, which is stored locally on your iPhone. No data is uploaded, no analytics are collected, and no account is needed. Your health data stays on your device.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Why not just use Apple's built-in daylight feature?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Apple shows basic daylight data in the Health app, but there's no goal, no ring, no streak, and no time-of-day breakdown. Sun Light turns that raw data into an actionable habit — with widgets, trends, and a Circadian Score to keep you on track.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta dt">
+  <div class="wrap" style="max-width:540px">
+    <h2>Start tracking your sunlight</h2>
+    <p class="sdesc">Free. Automatic. Private. Takes 30 seconds to set up.</p>
+    <div class="cta-btns">
+      <a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" class="btn btn-sun">Download Sun Light</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 Starr Apps</span>
+  <a href="/">Home</a>
+  <a href="/starr-ai">Starr AI</a>
+  <a href="/privacy">Privacy</a>
+  <a href="https://x.com/StarrApps">X</a>
+</footer>
+
+<script>
+const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>o.observe(el));
+</script>
+</body>
+</html>

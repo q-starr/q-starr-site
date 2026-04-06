@@ -3,552 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Q Starr — Track Your Light. Ask Your AI.</title>
+<title>Starr Apps — Private iOS Apps for Real Life</title>
+<meta name="description" content="Two iOS apps. One runs AI without internet. The other tracks your sunlight. No accounts, no subscriptions, no cloud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg:#08090C;--card:#0F1114;--border:rgba(255,255,255,0.05);
+  --text:#EAECF0;--muted:#9197A3;--dim:#5C6370;
+  --sun:#E8A838;--sun-s:rgba(232,168,56,0.08);
+  --ai:#5BB8DB;--ai-s:rgba(91,184,219,0.08);
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',-apple-system,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;line-height:1.65}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,9,12,0.8);border-bottom:1px solid var(--border)}
+.nav-i{max-width:960px;margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:1.35rem;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--sun)}
+.nav-r{display:flex;gap:20px;align-items:center}
+.nav-r a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s}
+.nav-r a:hover{color:var(--text)}
 
-  :root {
-    --gold: #c9a84c;
-    --gold-light: #e8d48b;
-    --gold-dim: #8a7333;
-    --bg: #0a0a0f;
-    --bg-card: #12121a;
-    --bg-card-hover: #1a1a25;
-    --text: #e8e8ed;
-    --text-dim: #8888a0;
-    --border: #222235;
-  }
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 28px 80px;position:relative;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.45;pointer-events:none}
+.o1{width:500px;height:500px;top:-12%;right:-8%;background:radial-gradient(circle,var(--sun-s),transparent 70%)}
+.o2{width:450px;height:450px;bottom:-8%;left:-6%;background:radial-gradient(circle,var(--ai-s),transparent 70%)}
+.hc{position:relative;z-index:1;max-width:620px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);padding:5px 14px 5px 10px;border-radius:999px;font-size:.76rem;color:var(--muted);margin-bottom:32px;animation:fu .6s ease both}
+.dot{width:6px;height:6px;border-radius:50%;background:#34D399;box-shadow:0 0 6px rgba(52,211,153,.4)}
+h1{font-family:var(--serif);font-size:clamp(2.6rem,6vw,4.2rem);font-weight:400;font-style:italic;line-height:1.1;letter-spacing:-.02em;margin-bottom:22px;animation:fu .6s ease .1s both}
+.c-s{color:var(--sun)}.c-a{color:var(--ai)}
+.hp{font-size:1.15rem;color:var(--muted);line-height:1.7;max-width:480px;margin:0 auto 40px;animation:fu .6s ease .2s both}
 
-  html { scroll-behavior: smooth; }
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto;padding:0 28px 120px;animation:fu .6s ease .3s both}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px 32px;display:flex;flex-direction:column;transition:border-color .3s,box-shadow .3s,transform .3s}
+.card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.1)}
+.card.ca:hover{box-shadow:0 20px 60px -20px var(--ai-s)}
+.card.cs:hover{box-shadow:0 20px 60px -20px var(--sun-s)}
+.badge{display:inline-flex;align-self:flex-start;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;padding:4px 10px;border-radius:6px;margin-bottom:18px}
+.ca .badge{background:rgba(91,184,219,.12);color:var(--ai)}
+.cs .badge{background:rgba(232,168,56,.12);color:var(--sun)}
+.card h2{font-family:var(--serif);font-style:italic;font-size:1.6rem;font-weight:400;margin-bottom:10px}
+.card>p{color:var(--muted);font-size:.92rem;line-height:1.7;margin-bottom:24px;flex-grow:1}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.9rem;transition:all .2s;align-self:flex-start}
+.btn-a{background:var(--ai);color:var(--bg)}.btn-a:hover{opacity:.9}
+.btn-s{background:var(--sun);color:var(--bg)}.btn-s:hover{opacity:.9}
 
-  body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+footer{border-top:1px solid var(--border);padding:36px 28px;text-align:center}
+footer span{color:var(--dim);font-size:.78rem}
+footer a{color:var(--muted);text-decoration:none;font-size:.78rem;margin:0 10px}
+footer a:hover{color:var(--text)}
 
-  /* Hero */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1000px;
-    height: 1000px;
-    background: radial-gradient(ellipse 60% 40% at 50% 30%, rgba(201,168,76,0.22) 0%, rgba(201,168,76,0.10) 30%, rgba(180,140,50,0.04) 55%, transparent 75%);
-    pointer-events: none;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(232,212,139,0.12) 0%, rgba(201,168,76,0.06) 35%, transparent 65%);
-    pointer-events: none;
-    filter: blur(30px);
-  }
-
-  .hero-logo {
-    width: 90px;
-    height: 90px;
-    margin-bottom: 2rem;
-    position: relative;
-    filter: drop-shadow(0 0 20px rgba(201,168,76,0.3)) drop-shadow(0 0 60px rgba(201,168,76,0.1));
-  }
-
-  .hero-logo svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 .gold { color: var(--gold); }
-
-  .hero p {
-    font-size: 1.25rem;
-    color: var(--text-dim);
-    max-width: 500px;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
-  }
-
-  .hero-cta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero-cta a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.85rem 1.75rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-  }
-
-  .btn-primary {
-    background: var(--gold);
-    color: #0a0a0f;
-  }
-
-  .btn-primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(201,168,76,0.25);
-  }
-
-  .btn-secondary {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--gold-dim);
-    color: var(--gold-light);
-    transform: translateY(-2px);
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 2rem;
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    animation: bounce 2s infinite;
-  }
-
-  @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(8px); }
-  }
-
-  /* Section styles */
-  section {
-    padding: 6rem 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-
-  .section-title {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-    line-height: 1.15;
-  }
-
-  .section-desc {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    max-width: 600px;
-    font-weight: 300;
-    margin-bottom: 3rem;
-  }
-
-  /* Product Cards */
-  .products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .product-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 2.5rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .product-card:hover {
-    background: var(--bg-card-hover);
-    border-color: var(--gold-dim);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-  }
-
-  .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .product-card:hover::before { opacity: 1; }
-
-  .product-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-  }
-
-  .product-icon.starr {
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    border: 1px solid var(--gold-dim);
-  }
-
-  .product-icon.sunlight {
-    background: linear-gradient(135deg, #2e1a0a, #3e2916);
-    border: 1px solid #c4883a;
-  }
-
-  .product-card h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-  }
-
-  .product-card .tagline {
-    color: var(--gold);
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
-
-  .product-card p {
-    color: var(--text-dim);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-
-  .features-list {
-    list-style: none;
-    margin-bottom: 2rem;
-  }
-
-  .features-list li {
-    padding: 0.4rem 0;
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .features-list li::before {
-    content: '→';
-    color: var(--gold);
-    font-weight: 600;
-  }
-
-  .badge {
-    display: inline-block;
-    padding: 0.3rem 0.85rem;
-    border-radius: 50px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  .badge-live {
-    background: rgba(201,168,76,0.15);
-    color: var(--gold);
-    border: 1px solid rgba(201,168,76,0.3);
-  }
-
-  .badge-soon {
-    background: rgba(136,136,160,0.1);
-    color: var(--text-dim);
-    border: 1px solid var(--border);
-  }
-
-  .product-card .download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-    background: var(--gold);
-    color: #0a0a0f;
-    margin-top: 0.5rem;
-  }
-
-  .product-card .download-btn:hover {
-    background: var(--gold-light);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(201,168,76,0.25);
-  }
-
-  .product-card .download-btn.disabled {
-    background: var(--border);
-    color: var(--text-dim);
-    cursor: default;
-    pointer-events: none;
-  }
-
-  /* How it works */
-  .how-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .how-step {
-    text-align: center;
-    padding: 2rem 1.5rem;
-  }
-
-  .step-num {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid var(--gold-dim);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
-    font-weight: 600;
-    color: var(--gold);
-    font-size: 1.1rem;
-  }
-
-  .how-step h4 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-
-  .how-step p {
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  /* Divider */
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: var(--gold-dim);
-    margin: 0 auto;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 4rem 2rem;
-    border-top: 1px solid var(--border);
-  }
-
-  footer p {
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
-  }
-
-  .social-links {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-
-  .social-links a {
-    color: var(--text-dim);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-  }
-
-  .social-links a:hover { color: var(--gold); }
-
-  /* Responsive */
-  @media (max-width: 640px) {
-    section { padding: 4rem 1.25rem; }
-    .product-card { padding: 1.75rem; }
-    .hero-cta { flex-direction: column; align-items: center; }
-  }
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:640px){.cards{grid-template-columns:1fr}.nav-r a:first-child{display:none}}
 </style>
 </head>
 <body>
+<nav><div class="nav-i">
+  <a href="/" class="logo">Starr <em>Apps</em></a>
+  <div class="nav-r">
+    <a href="/starr-ai">Starr AI</a>
+    <a href="/sun-light">Sun Light</a>
+  </div>
+</div></nav>
 
-<!-- Hero -->
-<div class="hero">
-  <div class="hero-logo">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#e8d48b" stop-opacity="0.4"/>
-          <stop offset="100%" stop-color="#c9a84c" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="sunCore" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#e8d48b"/>
-          <stop offset="100%" stop-color="#c9a84c"/>
-        </radialGradient>
-      </defs>
-      <circle cx="50" cy="50" r="30" fill="url(#sunGlow)"/>
-      <circle cx="50" cy="50" r="12" fill="url(#sunCore)"/>
-      <circle cx="50" cy="50" r="12" stroke="#e8d48b" stroke-width="0.5" opacity="0.5"/>
-      <line x1="50" y1="8" x2="50" y2="30" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
-      <line x1="50" y1="70" x2="50" y2="92" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
-      <line x1="8" y1="50" x2="30" y2="50" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
-      <line x1="70" y1="50" x2="92" y2="50" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" opacity="0.9"/>
-      <line x1="20.3" y1="20.3" x2="37.9" y2="37.9" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <line x1="62.1" y1="62.1" x2="79.7" y2="79.7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <line x1="79.7" y1="20.3" x2="62.1" y2="37.9" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-      <line x1="37.9" y1="62.1" x2="20.3" y2="79.7" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-    </svg>
+<section class="hero">
+  <div class="orb o1"></div><div class="orb o2"></div>
+  <div class="hc">
+    <div class="pill"><div class="dot"></div>Both apps live on the App Store</div>
+    <h1>Your AI works <span class="c-a">offline</span>.<br>Your watch tracks the <span class="c-s">sun</span>.</h1>
+    <p class="hp">Two iOS apps designed around a simple idea: your phone should be useful without asking for your data, your money, or your Wi-Fi.</p>
   </div>
-  <h1>Track Your Light.<br><span class="gold">Ask Your AI.</span></h1>
-  <p>Monitor healthy sunlight with your Apple Watch. Get fast, free AI answers — right in your pocket.</p>
-  <div class="hero-cta">
-    <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="btn-primary">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      Download Starr AI
-    </a>
-    <a href="#products" class="btn-secondary">Learn More</a>
+</section>
+
+<div class="cards">
+  <div class="card ca">
+    <div class="badge">AI Assistant</div>
+    <h2>Starr AI</h2>
+    <p>A real AI that runs entirely on your iPhone. Download the model once, then use it anywhere — planes, mountains, abroad. No internet, no account, no subscription.</p>
+    <a href="/starr-ai" class="btn btn-a">Learn more &rarr;</a>
   </div>
-  <div class="scroll-hint">↓</div>
+  <div class="card cs">
+    <div class="badge">Health + Wellness</div>
+    <h2>Sun Light</h2>
+    <p>Your Apple Watch already measures daylight. Sun Light turns that into a daily goal, streaks, time-of-day breakdowns, and a Circadian Score you can act on.</p>
+    <a href="/sun-light" class="btn btn-s">Learn more &rarr;</a>
+  </div>
 </div>
 
-<!-- Products -->
-<section id="products">
-  <div class="section-label">Products</div>
-  <h2 class="section-title">Two tools. One mission.</h2>
-  <p class="section-desc">We're building technology that helps people take back their time and their health — starting with the two things modern life gets wrong.</p>
-
-  <div class="products">
-    <!-- Starr AI -->
-    <div class="product-card">
-      <div class="product-icon starr">
-        <svg width="28" height="28" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="6" fill="#c9a84c"/><line x1="50" y1="15" x2="50" y2="38" stroke="#c9a84c" stroke-width="2.5"/><line x1="50" y1="62" x2="50" y2="85" stroke="#c9a84c" stroke-width="2.5"/><line x1="15" y1="50" x2="38" y2="50" stroke="#c9a84c" stroke-width="2.5"/><line x1="62" y1="50" x2="85" y2="50" stroke="#c9a84c" stroke-width="2.5"/><line x1="25" y1="25" x2="41" y2="41" stroke="#c9a84c" stroke-width="2"/><line x1="59" y1="59" x2="75" y2="75" stroke="#c9a84c" stroke-width="2"/><line x1="75" y1="25" x2="59" y2="41" stroke="#c9a84c" stroke-width="2"/><line x1="41" y1="59" x2="25" y2="75" stroke="#c9a84c" stroke-width="2"/></svg>
-      </div>
-      <span class="badge badge-live">Available Now</span>
-      <h3>Starr AI</h3>
-      <div class="tagline">AI that lives on your phone — and works without Wi-Fi.</div>
-      <p>Your AI travel companion that works at 30,000 feet. Translate, look things up, and get answers with no internet required. One download, fully offline, forever.</p>
-      <ul class="features-list">
-        <li>Works 100% offline after first download</li>
-        <li>iPhone + Apple Watch</li>
-        <li>No account needed, no subscriptions</li>
-        <li>Translate, research, and ask anything — anywhere</li>
-      </ul>
-      <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="download-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store — Free
-      </a>
-    </div>
-
-    <!-- Sun Light -->
-    <div class="product-card">
-      <div class="product-icon sunlight">
-        <svg width="28" height="28" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="16" stroke="#c4883a" stroke-width="3" fill="none"/><circle cx="50" cy="50" r="6" fill="#c4883a"/><line x1="50" y1="5" x2="50" y2="25" stroke="#c4883a" stroke-width="2.5"/><line x1="50" y1="75" x2="50" y2="95" stroke="#c4883a" stroke-width="2.5"/><line x1="5" y1="50" x2="25" y2="50" stroke="#c4883a" stroke-width="2.5"/><line x1="75" y1="50" x2="95" y2="50" stroke="#c4883a" stroke-width="2.5"/><line x1="18" y1="18" x2="32" y2="32" stroke="#c4883a" stroke-width="2"/><line x1="68" y1="68" x2="82" y2="82" stroke="#c4883a" stroke-width="2"/><line x1="82" y1="18" x2="68" y2="32" stroke="#c4883a" stroke-width="2"/><line x1="32" y1="68" x2="18" y2="82" stroke="#c4883a" stroke-width="2"/></svg>
-      </div>
-      <span class="badge badge-live">Available Now</span>
-      <h3>Sun Light</h3>
-      <div class="tagline">Track your daily sunlight automatically with Apple Watch.</div>
-      <p>Your Apple Watch already measures your time in daylight. Sun Light turns that data into something you can actually use — a daily goal, a progress ring, a streak counter, and a clear picture of when you're getting your light.</p>
-      <ul class="features-list">
-        <li>Automatic tracking via Apple Watch — no buttons to press</li>
-        <li>Daily progress ring, streaks, and customizable goals</li>
-        <li>Morning, afternoon, and evening time breakdowns</li>
-        <li>Home screen, Lock Screen, and Apple Watch widgets</li>
-      </ul>
-      <a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" class="download-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store — Free
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- How Starr AI Works -->
-<section>
-  <div class="section-label">How it Works</div>
-  <h2 class="section-title">Starr AI in three steps</h2>
-  <p class="section-desc">No account. No subscription. No Wi-Fi needed.</p>
-
-  <div class="how-grid">
-    <div class="how-step">
-      <div class="step-num">1</div>
-      <h4>Download once</h4>
-      <p>Starr AI downloads its model over Wi-Fi one time. After that, everything runs on-device.</p>
-    </div>
-    <div class="how-step">
-      <div class="step-num">2</div>
-      <h4>Go anywhere</h4>
-      <p>On a plane, in the mountains, off the grid — Starr works wherever you are, no connection needed.</p>
-    </div>
-    <div class="how-step">
-      <div class="step-num">3</div>
-      <h4>Just ask</h4>
-      <p>Translate languages, get travel tips, look things up, or have a conversation. Your AI, always available.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
 <footer>
-  <div class="social-links">
-    <a href="https://x.com/QStarrAI" target="_blank">X (Twitter)</a>
-    <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" target="_blank">Starr AI</a>
-    <a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" target="_blank">Sun Light</a>
-  </div>
-  <p>&copy; 2026 Q Starr. All rights reserved.</p>
+  <span>&copy; 2026 Starr Apps</span>
+  <a href="/privacy">Privacy</a>
+  <a href="/terms">Terms</a>
+  <a href="https://x.com/StarrApps">X</a>
 </footer>
-
 </body>
 </html>

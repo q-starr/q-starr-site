@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Starr AI — Offline AI for iPhone & Apple Watch</title>
+<meta name="description" content="AI that works without internet. Download once, use anywhere. On-device language model, no account, no subscription. Free on the App Store.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#08090C;--card:#0F1114;--card2:#141619;--border:rgba(255,255,255,0.05);
+  --text:#EAECF0;--muted:#9197A3;--dim:#5C6370;
+  --ai:#5BB8DB;--ai-s:rgba(91,184,219,0.08);--ai-m:rgba(91,184,219,0.15);
+  --green:#34D399;--red:#F87171;--yellow:#FBBF24;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',-apple-system,sans-serif;
+  --mono:'DM Mono',monospace;
+  --max:960px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.7;overflow-x:hidden;font-size:17px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,9,12,0.8);border-bottom:1px solid var(--border)}
+.nav-i{max-width:var(--max);margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:1.35rem;color:var(--text);text-decoration:none}
+.logo em{font-style:italic;color:var(--ai)}
+.nav-r{display:flex;gap:20px;align-items:center}
+.nav-r a{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s}
+.nav-r a:hover{color:var(--text)}
+.nav-dl{background:var(--ai)!important;color:var(--bg)!important;padding:7px 16px!important;border-radius:8px;font-weight:600!important}
+
+/* HERO */
+.hero{padding:130px 28px 80px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,var(--ai-s),transparent 65%);pointer-events:none;filter:blur(60px)}
+.hero-i{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+.tag{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--ai);margin-bottom:14px}
+.hero h1{font-family:var(--serif);font-size:clamp(2.4rem,5.5vw,3.6rem);font-weight:400;font-style:italic;line-height:1.1;letter-spacing:-.02em;margin-bottom:20px}
+.hero-sub{font-size:1.15rem;color:var(--muted);line-height:1.7;max-width:540px;margin-bottom:36px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.92rem;transition:all .2s;border:none;cursor:pointer}
+.btn-ai{background:var(--ai);color:var(--bg)}.btn-ai:hover{opacity:.9;transform:translateY(-1px)}
+.btn-g{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.12)}.btn-g:hover{background:var(--card)}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero-btns svg{width:16px;height:16px}
+
+/* SECTIONS */
+section{padding:80px 28px}
+.wrap{max-width:var(--max);margin:0 auto}
+.dt{border-top:1px solid var(--border)}
+h2{font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:400;font-style:italic;line-height:1.15;letter-spacing:-.015em;margin-bottom:14px}
+.sdesc{color:var(--muted);font-size:1.08rem;max-width:520px;line-height:1.7;margin-bottom:48px}
+
+/* COMPARISON TABLE */
+.cmp{width:100%;border-collapse:collapse;margin-top:8px;font-size:.88rem}
+.cmp th{text-align:left;padding:14px 16px;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);border-bottom:1px solid var(--border)}
+.cmp td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top}
+.cmp tr:last-child td{border-bottom:none}
+.cmp td:first-child{color:var(--text);font-weight:500}
+.cmp .hi{background:var(--ai-s);border-radius:0}
+.cmp .hi td{color:var(--text)}
+.cmp .hi td:first-child{color:var(--ai);font-weight:600}
+.y{color:var(--green)!important}.n{color:var(--red)!important}.m{color:var(--yellow)!important}
+.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.tbl-note{font-size:.78rem;color:var(--dim);margin-top:14px;font-style:italic}
+
+/* MODEL SPECS */
+.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.spec{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 20px}
+.spec-name{font-weight:600;font-size:.95rem;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.spec-name .default{font-size:.65rem;background:var(--ai-m);color:var(--ai);padding:2px 8px;border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.spec-desc{color:var(--muted);font-size:.84rem;line-height:1.6;margin-bottom:16px}
+.spec-meta{display:flex;flex-direction:column;gap:6px}
+.spec-row{display:flex;justify-content:space-between;font-size:.8rem}
+.spec-row span:first-child{color:var(--dim)}
+.spec-row span:last-child{color:var(--muted);font-family:var(--mono);font-size:.78rem}
+
+/* USE CASES */
+.uses{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+.use{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;transition:border-color .3s}
+.use:hover{border-color:rgba(91,184,219,.15)}
+.use-icon{font-size:1.4rem;margin-bottom:12px}
+.use h4{font-size:.95rem;font-weight:600;margin-bottom:6px}
+.use p{color:var(--muted);font-size:.86rem;line-height:1.6}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;text-align:center}
+.step-n{font-family:var(--serif);font-style:italic;font-size:2rem;color:var(--ai);opacity:.25;margin-bottom:10px}
+.step h4{font-size:.95rem;font-weight:600;margin-bottom:6px}
+.step p{color:var(--muted);font-size:.86rem;line-height:1.6}
+
+/* PRIVACY */
+.priv-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
+.priv{text-align:center;padding:32px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px}
+.priv-ico{font-size:1.5rem;margin-bottom:12px}
+.priv h4{font-size:.92rem;font-weight:600;margin-bottom:6px}
+.priv p{color:var(--muted);font-size:.84rem;line-height:1.6}
+
+/* FAQ */
+.faq-list{max-width:680px}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--sans);font-size:.98rem;font-weight:600;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s}
+.faq-q:hover{color:var(--ai)}
+.faq-q .arr{transition:transform .3s;font-size:.7rem;color:var(--dim)}
+.faq-item.open .arr{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a-i{padding-bottom:20px;color:var(--muted);font-size:.88rem;line-height:1.7}
+
+/* CTA */
+.cta{text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,var(--ai-s),transparent 60%);pointer-events:none}
+.cta .wrap{position:relative;z-index:1}
+.cta h2,.cta .sdesc{text-align:center}
+.cta .sdesc{margin:0 auto 28px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:36px 28px;text-align:center}
+footer span{color:var(--dim);font-size:.78rem}
+footer a{color:var(--muted);text-decoration:none;font-size:.78rem;margin:0 10px}
+footer a:hover{color:var(--text)}
+
+/* SCREENSHOTS */
+.screenshots{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:56px;padding:0 28px}
+.phone{width:220px;height:460px;background:var(--card);border:1px solid var(--border);border-radius:32px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:transform .3s}
+.phone:hover{transform:translateY(-4px)}
+.phone .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:80px;height:24px;background:var(--bg);border-radius:0 0 14px 14px}
+.phone img{width:100%;height:100%;object-fit:cover;border-radius:32px}
+.phone .placeholder{color:var(--dim);font-size:.85rem;text-align:center;line-height:1.5}
+.phone .placeholder span{display:block;font-size:1.6rem;margin-bottom:6px}
+.screenshots-note{text-align:center;margin-top:20px;color:var(--dim);font-size:.82rem;font-style:italic}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(20px);transition:all .65s cubic-bezier(.16,1,.3,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .specs-grid,.steps,.priv-row{grid-template-columns:1fr}
+  .uses{grid-template-columns:1fr}
+  .cmp{font-size:.8rem}
+  .cmp th,.cmp td{padding:10px 12px}
+  .nav-r a:not(.nav-dl){display:none}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="nav-i">
+  <a href="/" class="logo">Starr <em>AI</em></a>
+  <div class="nav-r">
+    <a href="/">Home</a>
+    <a href="/sun-light">Sun Light</a>
+    <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="nav-dl">Download</a>
+  </div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-i">
+    <div class="tag">Offline AI for iPhone</div>
+    <h1>AI that works at 30,000 feet</h1>
+    <p class="hero-sub">Starr AI runs a language model directly on your iPhone — no internet, no account, no subscription. Downloaded over 600,000 times. Free on the App Store.</p>
+    <div class="hero-btns">
+      <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="btn btn-ai">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store — Free
+      </a>
+      <a href="#compare" class="btn btn-g">See how it compares ↓</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="screenshots rv">
+      <div class="phone">
+        <img src="/images/starr-ai/chat.png" alt="Starr AI chat interface — Your own AI in your pocket">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/settings.png" alt="Starr AI settings showing on-device AI engine options">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/download.png" alt="Starr AI one-time model download screen">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="compare" class="dt">
+  <div class="wrap">
+    <div class="tag">Comparison</div>
+    <h2>How Starr AI compares</h2>
+    <p class="sdesc">Every AI assistant requires internet and an account — except this one.</p>
+
+    <div class="tbl-wrap rv">
+      <table class="cmp">
+        <thead>
+          <tr><th></th><th>Starr AI</th><th>ChatGPT</th><th>Gemini</th><th>Siri</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi"><td>Works offline</td><td class="y">✓ Yes</td><td class="n">✗ No</td><td class="n">✗ No</td><td class="m">~ Limited</td></tr>
+          <tr class="hi"><td>No account needed</td><td class="y">✓ Yes</td><td class="n">✗ No</td><td class="n">✗ No</td><td class="y">✓ Yes</td></tr>
+          <tr class="hi"><td>Data stays on device</td><td class="y">✓ Always</td><td class="n">✗ No</td><td class="n">✗ No</td><td class="m">~ Partial</td></tr>
+          <tr class="hi"><td>Free — no subscription</td><td class="y">✓ Yes</td><td class="m">~ Freemium</td><td class="m">~ Freemium</td><td class="y">✓ Yes</td></tr>
+          <tr class="hi"><td>Apple Watch app</td><td class="y">✓ Yes</td><td class="n">✗ No</td><td class="n">✗ No</td><td class="y">✓ Yes</td></tr>
+          <tr class="hi"><td>Open-ended conversation</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td><td class="n">✗ No</td></tr>
+          <tr class="hi"><td>Translation</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td></tr>
+          <tr class="hi"><td>Complex reasoning</td><td class="m">~ Good</td><td class="y">✓ Best</td><td class="y">✓ Strong</td><td class="n">✗ Weak</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tbl-note">Starr AI uses smaller on-device models — it won't match GPT-4 on complex analysis, but for everyday questions, travel, and translation it's remarkably capable and always available.</p>
+  </div>
+</section>
+
+<!-- ON-DEVICE MODELS -->
+<section class="dt">
+  <div class="wrap">
+    <div class="tag">Under the Hood</div>
+    <h2>On-device models</h2>
+    <p class="sdesc">Starr AI uses established open-source language models — the same ones used by researchers and developers worldwide — optimized for Apple's Neural Engine via the MLX framework.</p>
+
+    <div class="specs-grid rv">
+      <div class="spec">
+        <div class="spec-name">Qwen 2.5 <span class="default">Default</span></div>
+        <p class="spec-desc">Alibaba's multilingual model. Excellent all-rounder with strong translation and conversation ability.</p>
+        <div class="spec-meta">
+          <div class="spec-row"><span>Parameters</span><span>3B</span></div>
+          <div class="spec-row"><span>Size on disk</span><span>~1.8 GB</span></div>
+          <div class="spec-row"><span>Best for</span><span>iPhone 15 Pro+</span></div>
+          <div class="spec-row"><span>Strengths</span><span>Multilingual, general</span></div>
+        </div>
+      </div>
+      <div class="spec">
+        <div class="spec-name">Phi-4 Mini</div>
+        <p class="spec-desc">Microsoft's compact reasoning model. Strong on logic and analytical questions.</p>
+        <div class="spec-meta">
+          <div class="spec-row"><span>Parameters</span><span>3.8B</span></div>
+          <div class="spec-row"><span>Size on disk</span><span>~2.2 GB</span></div>
+          <div class="spec-row"><span>Best for</span><span>iPhone 15 Pro+</span></div>
+          <div class="spec-row"><span>Strengths</span><span>Reasoning, Q&A</span></div>
+        </div>
+      </div>
+      <div class="spec">
+        <div class="spec-name">SmolLM2</div>
+        <p class="spec-desc">Hugging Face's ultra-lightweight model. Runs on older devices with limited RAM.</p>
+        <div class="spec-meta">
+          <div class="spec-row"><span>Parameters</span><span>1.7B</span></div>
+          <div class="spec-row"><span>Size on disk</span><span>~1.0 GB</span></div>
+          <div class="spec-row"><span>Best for</span><span>iPhone 14, iPad</span></div>
+          <div class="spec-row"><span>Strengths</span><span>Speed, low RAM</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="dt">
+  <div class="wrap">
+    <div class="tag">Use Cases</div>
+    <h2>What people actually use it for</h2>
+    <p class="sdesc">Starr AI is built for the moments when other AI assistants aren't available.</p>
+
+    <div class="uses rv">
+      <div class="use">
+        <div class="use-icon">✈️</div>
+        <h4>In-flight assistant</h4>
+        <p>Translate menus, draft emails, get travel tips, or just pass the time with conversation — all at 30,000 feet with no Wi-Fi purchase.</p>
+      </div>
+      <div class="use">
+        <div class="use-icon">🌎</div>
+        <h4>International travel</h4>
+        <p>No roaming charges, no hunting for Wi-Fi. Translate signs, ask about customs, get directions in natural language — all offline.</p>
+      </div>
+      <div class="use">
+        <div class="use-icon">🏔️</div>
+        <h4>Remote & outdoors</h4>
+        <p>Hiking, camping, road trips through dead zones. Identify plants, get first aid info, or brainstorm without a cell signal.</p>
+      </div>
+      <div class="use">
+        <div class="use-icon">🔒</div>
+        <h4>Privacy-first users</h4>
+        <p>Your conversations never leave your device. No server logs, no training data, no account. The most private AI assistant available.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="dt">
+  <div class="wrap">
+    <div class="tag">Setup</div>
+    <h2>Three steps. Two minutes.</h2>
+    <p class="sdesc">No account to create, no subscription to manage.</p>
+
+    <div class="steps rv">
+      <div class="step">
+        <div class="step-n">01</div>
+        <h4>Download from App Store</h4>
+        <p>Install Starr AI for free. The app will download your chosen language model over Wi-Fi (~1–2 GB).</p>
+      </div>
+      <div class="step">
+        <div class="step-n">02</div>
+        <h4>Model loads on-device</h4>
+        <p>The model installs to your iPhone's storage. From this point, everything runs locally on Apple's Neural Engine.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">03</div>
+        <h4>Use it anywhere</h4>
+        <p>Airplane mode, no signal, foreign country — doesn't matter. Starr AI works wherever your phone goes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="dt">
+  <div class="wrap">
+    <div class="tag">Privacy</div>
+    <h2>Your data never leaves your phone</h2>
+    <p class="sdesc">This isn't a marketing claim — it's the architecture. There is no server.</p>
+
+    <div class="priv-row rv">
+      <div class="priv">
+        <div class="priv-ico">🔒</div>
+        <h4>On-Device Only</h4>
+        <p>The language model runs on your iPhone's Neural Engine. No API calls, no cloud processing, no data transmission.</p>
+      </div>
+      <div class="priv">
+        <div class="priv-ico">👤</div>
+        <h4>No Account</h4>
+        <p>Open the app and start talking. No email, no password, no sign-up. Nothing to create, nothing to remember.</p>
+      </div>
+      <div class="priv">
+        <div class="priv-ico">🚫</div>
+        <h4>No Tracking</h4>
+        <p>No analytics, no telemetry, no ad SDKs. We don't know who you are and we don't want to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="dt">
+  <div class="wrap">
+    <div class="tag">FAQ</div>
+    <h2>Common questions</h2>
+
+    <div class="faq-list rv">
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does it work without internet?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Starr AI downloads an open-source language model (1–2 GB) to your iPhone during first launch. After that, all inference runs on Apple's Neural Engine — the same chip that powers Face ID and photo processing. No server needed.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Which iPhones does it work on?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Starr AI works on any iPhone running iOS 17+. For the best experience with the default Phi-4 Mini model, iPhone 15 Pro or newer is recommended (8GB RAM). The SmolLM2 model runs well on older devices with 6GB RAM.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does it compare to ChatGPT?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">ChatGPT uses much larger models running on cloud servers, so it's stronger on complex reasoning and long-form analysis. Starr AI uses compact on-device models — it's great for everyday questions, translation, and brainstorming, and it works when ChatGPT literally can't (no internet). Different tools for different moments.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I change the AI model?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Yes. Starr AI ships with Qwen 2.5 as the default — a strong multilingual model. You can switch to Phi-4 Mini (better for reasoning) or SmolLM2 (lighter, for older devices) in settings.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there an Apple Watch app?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Yes — Starr AI includes a companion Apple Watch app so you can ask quick questions from your wrist.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will it ever cost money?<span class="arr">▼</span></button>
+        <div class="faq-a"><div class="faq-a-i">The core app is free and will stay free. There are no ads, no in-app purchases, and no subscription. The models are open-source and the processing is on your device, so there are no ongoing server costs to pass along.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta dt">
+  <div class="wrap" style="max-width:540px">
+    <h2>Try it now</h2>
+    <p class="sdesc">Free. Private. Works without Wi-Fi.</p>
+    <div class="cta-btns">
+      <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="btn btn-ai">Download Starr AI</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>&copy; 2026 Starr Apps</span>
+  <a href="/">Home</a>
+  <a href="/sun-light">Sun Light</a>
+  <a href="/privacy">Privacy</a>
+  <a href="https://x.com/StarrApps">X</a>
+</footer>
+
+<script>
+const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>o.observe(el));
+</script>
+</body>
+</html>
