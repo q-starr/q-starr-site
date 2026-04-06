@@ -28,19 +28,17 @@
 </style>
 <style>
 :root {
-  --bg:#08090C;--card:#0F1114;--card2:#141619;--border:rgba(255,255,255,0.05);
+  --bg:#08090C;--card:#0F1114;--border:rgba(255,255,255,0.05);
   --text:#F2F4F7;--muted:#E8EAF0;--dim:#B0B8C4;
-  --ai:#5BB8DB;--ai-s:rgba(91,184,219,0.14);--ai-m:rgba(91,184,219,0.15);
-  --green:#34D399;--red:#F87171;--yellow:#FBBF24;
+  --ai:#5BB8DB;--ai-s:rgba(91,184,219,0.14);
   --serif:'Instrument Serif',Georgia,serif;
   --sans:'DM Sans',-apple-system,sans-serif;
-  --mono:'DM Mono',monospace;
   --max:960px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;background:#08090C}
 body{font-family:var(--sans);background:linear-gradient(180deg,#08090C 0%,#0D0F18 40%,#0A0C14 100%);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.7;overflow-x:hidden;font-size:20px;min-height:100vh}
-/* NAV */
+
 nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,9,12,0.8);border-bottom:1px solid var(--border)}
 .nav-i{max-width:var(--max);margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--serif);font-size:1.6rem;color:var(--text);text-decoration:none}
@@ -50,7 +48,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-
 .nav-r a:hover{color:var(--text)}
 .nav-dl{background:var(--ai)!important;color:var(--bg)!important;padding:7px 16px!important;border-radius:8px;font-weight:600!important}
 
-/* HERO */
 .hero{padding:130px 28px 80px;position:relative;overflow:hidden}
 .hero::after{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,var(--ai-s),transparent 65%);pointer-events:none;filter:blur(60px)}
 .hero-i{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
@@ -59,113 +56,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-
 .hero-sub{font-size:1.25rem;color:var(--muted);line-height:1.7;max-width:540px;margin-bottom:36px}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600;font-size:1rem;transition:all .2s;border:none;cursor:pointer}
 .btn-ai{background:var(--ai);color:var(--bg)}.btn-ai:hover{opacity:.9;transform:translateY(-1px)}
-.btn-g{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.12)}.btn-g:hover{background:var(--card)}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap}
 .hero-btns svg{width:16px;height:16px}
 
-/* SECTIONS */
 section{padding:48px 28px}
 .wrap{max-width:var(--max);margin:0 auto}
 .dt{border-top:1px solid var(--border)}
 h2{font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:400;font-style:italic;line-height:1.15;letter-spacing:-.015em;margin-bottom:14px}
-.sdesc{color:var(--muted);font-size:1.2rem;max-width:520px;line-height:1.7;margin-bottom:16px}
 
-/* COMPARISON TABLE */
-.cmp{width:100%;border-collapse:collapse;margin-top:8px;font-sizee:.88rem}
-.cmp th{text-align:left;padding:14px 16px;font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);border-bottom:1px solid var(--border)}
-.cmp td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top}
-.cmp tr:last-child td{border-bottom:none}
-.cmp td:first-child{color:var(--text);font-weight:500}
-.cmp .hi{background:var(--ai-s);border-radius:0}
-.cmp .hi td{color:var(--text)}
-.cmp .hi td:first-child{color:var(--ai);font-weight:600}
-.y{color:var(--green)!important}.n{color:var(--red)!important}.m{color:var(--yellow)!important}
-.tbl-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.tbl-note{font-size:.86rem;color:var(--dim);margin-top:14px;font-style:italic}
-
-/* MODEL SPECS */
-.specs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
-.spec{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 20px}
-.spec-name{font-weight:600;font-size:.95rem;margin-bottom:4px;display:flex;align-items:center;gap:8px}
-.spec-name .default{font-size:.65rem;background:var(--ai-m);color:var(--ai);padding:2px 8px;border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-.spec-desc{color:var(--muted);font-size:.92rem;line-height:1.6;margin-bottom:16px}
-.spec-meta{display:flex;flex-direction:column;gap:6px}
-.spec-row{display:flex;justify-content:space-between;font-size:.88rem}
-.spec-row span:first-child{color:var(--dim)}
-.spec-row span:last-child{color:var(--muted);font-family:var(--mono);font-size:.86rem}
-
-/* USE CASES */
-.uses{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
-.use{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;transition:border-color .3s}
-.use:hover{border-color:rgba(91,184,219,.15)}
-.use-icon{font-size:1.4rem;margin-bottom:12px}
-.use h4{font-size:1.05rem;font-weight:600;margin-bottom:6px}
-.use p{color:var(--muted);font-size:.95rem;line-height:1.6}
-
-/* HOW IT WORKS */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
-.step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 24px;text-align:center}
-.step-n{display:none}
-.step h4{font-size:1.05rem;font-weight:600;margin-bottom:6px}
-.step p{color:var(--muted);font-size:.95rem;line-height:1.6}
-
-/* PRIVACY */
-.priv-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px}
-.priv{text-align:center;padding:32px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px}
-.priv-ico{font-size:1.5rem;margin-bottom:12px}
-.priv h4{font-size:1rem;font-weight:600;margin-bottom:6px}
-.priv p{color:var(--muted);font-size:.92rem;line-height:1.6}
-
-/* FAQ */
-.faq-list{max-width:680px}
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--sans);font-size:1.05rem;font-weight:600;text-align:left;padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;transition:color .2s}
-.faq-q:hover{color:var(--ai)}
-.faq-q .arr{transition:transform .3s;font-size:.7rem;color:var(--dim)}
-.faq-item.open .arr{transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.faq-item.open .faq-a{max-height:300px}
-.faq-a-i{padding-bottom:20px;color:var(--muted);font-size:.95rem;line-height:1.7}
-
-/* CTA */
 .cta{text-align:center;position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,var(--ai-s),transparent 60%);pointer-events:none}
 .cta .wrap{position:relative;z-index:1}
-.cta h2,.cta .sdesc{text-align:center}
-.cta .sdesc{margin:0 auto 28px}
+.cta h2{text-align:center}
 .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
-/* FOOTER */
 footer{border-top:1px solid var(--border);padding:36px 28px;text-align:center}
 footer span{color:var(--dim);font-size:.84rem}
 footer a{color:var(--muted);text-decoration:none;font-size:.84rem;margin:0 10px}
 footer a:hover{color:var(--text)}
 
-/* SCREENSHOTS */
-.screenshots{display:flex;flex-wrap:wrap;gap:24px;margin-top:56px;padding:0 28px;justify-content:center}
-.phone{min-width:280px;width:280px;height:588px;background:var(--card);border:1px solid var(--border);border-radius:28px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:transform .3s;flex-shrink:0}
-.phone:hover{transform:translateY(-4px)}
-.phone .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:80px;height:24px;background:var(--bg);border-radius:0 0 14px 14px}
-.phone img{width:100%;height:100%;object-fit:cover;border-radius:28px}
-.phone .placeholder{color:var(--dim);font-size:.85rem;text-align:center;line-height:1.5}
-.phone .placeholder span{display:block;font-size:1.6rem;margin-bottom:6px}
-.screenshots-note{text-align:center;margin-top:20px;color:var(--dim);font-size:.82rem;font-style:italic}
-.watch{min-width:140px;width:140px;height:168px;background:var(--card);border:1px solid var(--border);border-radius:36px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:transform .3s;scroll-snap-align:start;flex-shrink:0}
-.watch:hover{transform:translateY(-4px)}
-.watch img{width:100%;height:100%;object-fit:cover;border-radius:36px}
-@media(min-width:769px){.screenshots{justify-content:center}}
-
-/* REVEAL */
 .rv{opacity:0;transform:translateY(20px);transition:all .65s cubic-bezier(.16,1,.3,1)}
 .rv.vis{opacity:1;transform:translateY(0)}
 
-@media(max-width:768px){
-  .specs-grid,.steps,.priv-row{grid-template-columns:1fr}
-  .uses{grid-template-columns:1fr}
-  .cmp{font-size:.8rem}
-  .cmp th,.cmp td{padding:10px 12px}
-  
-}
 .nav-icon{width:28px;height:28px;border-radius:7px;vertical-align:middle;margin-right:6px}
 @media(max-width:640px){.logo{font-size:1.25rem}.nav-icon{width:22px;height:22px;border-radius:5px;margin-right:4px}.nav-r{gap:10px}.nav-r a{font-size:.82rem}.nav-dl{padding:6px 12px!important;font-size:.82rem!important}}
 
@@ -174,13 +86,9 @@ footer a:hover{color:var(--text)}
 .watch-flow-item{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
 .watch-flow-item img{width:140px;height:168px;border-radius:36px;object-fit:cover;border:1px solid var(--border);transition:transform .3s}
 .watch-flow-item img:hover{transform:translateY(-4px)}
-.watch-flow-arrow{color:var(--sun);font-size:1.4rem;opacity:.5;padding:0 12px;flex-shrink:0;line-height:1}
+.watch-flow-arrow{color:var(--ai);font-size:1.4rem;opacity:.5;padding:0 12px;flex-shrink:0;line-height:1}
 .watch-flow-caption{text-align:center;margin-top:8px}
 .watch-flow-caption h3{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.6rem);margin-bottom:8px}
-.watch-flow-caption p{color:var(--muted);font-size:.95rem}
-.watch-flow-steps{list-style:none;padding:0;margin:24px auto 0;max-width:480px;text-align:left}
-.watch-flow-steps li{color:var(--muted);font-size:1rem;line-height:1.7;padding-left:2em;position:relative;margin-bottom:8px}
-.watch-flow-steps li .step-num{position:absolute;left:0;color:var(--sun);font-weight:600;font-size:.85rem;width:1.6em;text-align:center}
 @media(max-width:520px){.watch-flow{gap:0}.watch-flow-item img{width:100px;height:120px;border-radius:26px}.watch-flow-arrow{font-size:1rem;padding:0 6px}}
 </style>
 </head>
@@ -199,13 +107,13 @@ footer a:hover{color:var(--text)}
 <section class="hero">
   <div class="hero-i">
     <div class="tag">Starr AI</div>
-    <h1>Your own AI on your iPhone — talk to it from your Apple Watch.</h1>
+    <h1>Your own AI on your iPhone &mdash; talk to it from your Apple Watch.</h1>
     <p style="color:var(--muted);font-size:1.3rem;margin-bottom:12px">Simple AI for everyone.</p>
-    <p class="hero-sub">Quick answers, translations, and everyday help — even when there's no internet.</p>
+    <p class="hero-sub">Quick answers, translations, and everyday help &mdash; even when there's no internet.</p>
     <div class="hero-btns">
       <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="btn btn-ai">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store — Free
+        Free on the App Store
       </a>
     </div>
   </div>
@@ -221,16 +129,16 @@ footer a:hover{color:var(--text)}
       <div class="watch-flow-item">
         <img src="/images/starr-ai/Starr_Watch_Home.png" alt="Starr AI on Apple Watch — Ask me anything">
       </div>
-      <div class="watch-flow-arrow">→</div>
+      <div class="watch-flow-arrow">&rarr;</div>
       <div class="watch-flow-item">
         <img src="/images/starr-ai/Starr_Watch_TextInput.png" alt="Typing a question on Apple Watch">
       </div>
-      <div class="watch-flow-arrow">→</div>
+      <div class="watch-flow-arrow">&rarr;</div>
       <div class="watch-flow-item">
         <img src="/images/starr-ai/Starr_Watch_NYCResponse.png" alt="Starr AI response about New York City on Apple Watch">
       </div>
     </div>
-    <p style="color:var(--muted);font-size:1.1rem;margin-top:16px;max-width:520px;display:inline-block;line-height:1.7">Raise your wrist, ask anything, and get a clear reply — even when your phone is in your pocket.</p>
+    <p style="color:var(--muted);font-size:1.1rem;margin-top:16px;max-width:520px;display:inline-block;line-height:1.7">Raise your wrist, ask anything, and get a clear reply &mdash; even when your phone is in your pocket.</p>
   </div>
 </section>
 
@@ -239,54 +147,11 @@ footer a:hover{color:var(--text)}
   <div class="wrap">
     <h2>Why on-device AI is valuable</h2>
     <ul style="list-style:none;padding:0;margin:0;max-width:640px">
-      <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">&#10003;</span> Works offline — perfect when internet is down or during travel</li>
+      <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">&#10003;</span> Works offline &mdash; perfect when internet is down or during travel</li>
       <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">&#10003;</span> Fast, reliable answers with no waiting</li>
-      <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">&#10003;</span> Always available as a helpful reference tool (translator, dictionary, quick knowledge)</li>
-      <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">&#10003;</span> No accounts or subscriptions — completely free to use</li>
-      <li style="font-size:1.05rem;color:var(--text);margin-bottom:0;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">&#10003;</span> Great even in emergencies or when power/internet is out</li>
+      <li style="font-size:1.05rem;color:var(--text);margin-bottom:14px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">&#10003;</span> Always available as a helpful reference tool</li>
+      <li style="font-size:1.05rem;color:var(--text);margin-bottom:0;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">&#10003;</span> No accounts or subscriptions &mdash; completely free to use</li>
     </ul>
-  </div>
-</section>
-
-<!-- SCREENSHOTS -->
-<section style="padding-top:20px">
-  <div class="wrap">
-    <div class="screenshots rv">
-      <div class="phone">
-        <img src="/images/starr-ai/Starr_Screenshot_MeetStarr_6.5.png" alt="Meet Starr — Your free AI companion that works anywhere">
-      </div>
-      <div class="phone">
-        <img src="/images/starr-ai/Starr_IMG_0369_6.5.png" alt="One-time download — then works everywhere, offline">
-      </div>
-      <div class="phone">
-        <img src="/images/starr-ai/Starr_Screenshot_ReadyToGo_6.5.png" alt="Ready to Go — works on iPhone and Apple Watch">
-      </div>
-      <div class="phone">
-        <img src="/images/starr-ai/Starr_IMG_0367_6.5.png" alt="Starr AI home screen with suggested prompts">
-      </div>
-      <div class="phone">
-        <img src="/images/starr-ai/starr-miami-chat.png" alt="Starr AI answering a question about Miami and Spanish phrases">
-      </div>
-    </div>
-
-    <h3 style="font-family:var(--serif);font-style:italic;font-size:1.3rem;text-align:center;margin-top:48px;color:var(--muted)">Apple Watch</h3>
-    <div class="screenshots rv" style="margin-top:20px">
-      <div class="watch">
-        <img src="/images/starr-ai/Starr_Watch_Home.png" alt="Starr AI on Apple Watch — Ask me anything">
-      </div>
-      <div class="watch">
-        <img src="/images/starr-ai/Starr_Watch_TextInput.png" alt="Typing a question on Apple Watch">
-      </div>
-      <div class="watch">
-        <img src="/images/starr-ai/Starr_Watch_Thinking.png" alt="Starr AI thinking on Apple Watch">
-      </div>
-      <div class="watch">
-        <img src="/images/starr-ai/Starr_Watch_NYCResponse.png" alt="Starr AI response about New York City on Apple Watch">
-      </div>
-      <div class="watch">
-        <img src="/images/starr-ai/Starr_Watch_OpenOnIPhone.png" alt="Open Starr on iPhone prompt on Apple Watch">
-      </div>
-    </div>
   </div>
 </section>
 
@@ -297,7 +162,7 @@ footer a:hover{color:var(--text)}
     <ul style="list-style:none;padding:0;margin:0;max-width:480px">
       <li style="font-size:1.1rem;color:var(--text);margin-bottom:12px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">1.</span> Download Starr AI</li>
       <li style="font-size:1.1rem;color:var(--text);margin-bottom:12px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">2.</span> Download a model once (over Wi-Fi)</li>
-      <li style="font-size:1.1rem;color:var(--text);margin-bottom:12px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">3.</span> Ask anything — on your iPhone or straight from your Apple Watch</li>
+      <li style="font-size:1.1rem;color:var(--text);margin-bottom:12px;padding-left:1.4em;position:relative"><span style="position:absolute;left:0;color:var(--ai)">3.</span> Ask anything &mdash; on your iPhone or from your Apple Watch</li>
     </ul>
   </div>
 </section>
@@ -309,18 +174,16 @@ footer a:hover{color:var(--text)}
     <div class="cta-btns">
       <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="btn btn-ai">
         <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store — Free
+        App Store &mdash; Free
       </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>&copy; 2026 Starr Apps</span>
-  <a href="/">Home</a>
-  <a href="/sun-light">Sun Light</a>
+  <span>&copy; 2026 Q Starr LLC</span>
   <a href="/privacy">Privacy</a>
-  <a href="https://x.com/QStarrAI">X</a>
+  <a href="/terms">Terms</a>
 </footer>
 
 <script>
