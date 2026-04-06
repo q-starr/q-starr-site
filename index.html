@@ -107,7 +107,10 @@ footer a:hover{color:var(--text)}
 .watch-flow-arrow{color:var(--ai);font-size:1.4rem;opacity:.5;padding:0 12px;flex-shrink:0;line-height:1}
 .watch-flow-dot{color:var(--sun);font-size:1.8rem;opacity:.3;padding:0 20px;flex-shrink:0;line-height:1}
 .watch-flow-label{font-size:.84rem;color:var(--dim);margin-top:10px;text-align:center}
-.watch-section-label{color:var(--muted);font-size:1.05rem;margin-top:24px;max-width:520px;display:inline-block;line-height:1.7}
+.watch-section-label{color:var(--muted);font-size:1.05rem;margin-top:10px;max-width:520px;display:inline-block;line-height:1.7}
+.watch-app-title{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px}
+.watch-app-title img{width:40px;height:40px;border-radius:10px}
+.watch-app-title h3{font-family:var(--serif);font-style:italic;font-size:1.6rem;font-weight:400;margin:0}
 h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3vw,1.8rem);font-weight:400;margin-bottom:8px}
 
 /* DOWNLOAD BUTTONS */
@@ -149,32 +152,44 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
     <h2 class="section-h">Simple on your wrist.</h2>
 
     <!-- Starr AI Watch Flow -->
-    <div class="watch-flow rv" style="margin-top:32px">
-      <div class="watch-flow-item">
-        <img src="/images/starr-ai/Starr_Watch_Home.png" alt="Starr AI on Apple Watch — Ask me anything">
+    <div style="margin-top:40px">
+      <div class="watch-app-title">
+        <img src="/starr-ai/icon_1024x1024.png" alt="Starr AI">
+        <h3>Starr AI</h3>
       </div>
-      <div class="watch-flow-arrow">→</div>
-      <div class="watch-flow-item">
-        <img src="/images/starr-ai/Starr_Watch_TextInput.png" alt="Typing a question on Apple Watch">
+      <div class="watch-flow rv" style="margin-top:16px;margin-bottom:12px">
+        <div class="watch-flow-item">
+          <img src="/images/starr-ai/Starr_Watch_Home.png" alt="Starr AI on Apple Watch — Ask me anything">
+        </div>
+        <div class="watch-flow-arrow">→</div>
+        <div class="watch-flow-item">
+          <img src="/images/starr-ai/Starr_Watch_TextInput.png" alt="Typing a question on Apple Watch">
+        </div>
+        <div class="watch-flow-arrow">→</div>
+        <div class="watch-flow-item">
+          <img src="/images/starr-ai/Starr_Watch_NYCResponse.png" alt="Starr AI response about New York City">
+        </div>
       </div>
-      <div class="watch-flow-arrow">→</div>
-      <div class="watch-flow-item">
-        <img src="/images/starr-ai/Starr_Watch_NYCResponse.png" alt="Starr AI response about New York City">
-      </div>
+      <p class="watch-section-label">Ask anything and get answers directly from your Apple Watch.</p>
     </div>
-    <p class="watch-section-label"><strong>Starr AI</strong> — Ask anything and get answers directly from your Apple Watch.</p>
 
     <!-- Sun Light Watch Flow -->
-    <div class="watch-flow rv" style="margin-top:48px">
-      <div class="watch-flow-item">
-        <img src="/images/sun-light/watch-ring.PNG" alt="Sun Light progress ring on Apple Watch">
+    <div style="margin-top:52px">
+      <div class="watch-app-title">
+        <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" alt="Sun Light">
+        <h3>Sun Light</h3>
       </div>
-      <div class="watch-flow-dot">&#183;</div>
-      <div class="watch-flow-item">
-        <img src="/images/sun-light/watch-pyramid.PNG" alt="Sun Light pyramid on Apple Watch">
+      <div class="watch-flow rv" style="margin-top:16px;margin-bottom:12px">
+        <div class="watch-flow-item">
+          <img src="/images/sun-light/watch-ring.PNG" alt="Sun Light progress ring on Apple Watch">
+        </div>
+        <div class="watch-flow-dot">&#183;</div>
+        <div class="watch-flow-item">
+          <img src="/images/sun-light/watch-pyramid.PNG" alt="Sun Light pyramid on Apple Watch">
+        </div>
       </div>
+      <p class="watch-section-label">See your daily sunlight progress at a glance on your Apple Watch.</p>
     </div>
-    <p class="watch-section-label"><strong>Sun Light</strong> — See your daily sunlight progress at a glance on your Apple Watch.</p>
   </div>
 </section>
 
