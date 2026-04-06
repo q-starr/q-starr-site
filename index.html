@@ -92,12 +92,37 @@ footer a{color:var(--muted);text-decoration:none;font-size:.84rem;margin:0 10px}
 footer a:hover{color:var(--text)}
 
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:640px){.cards{grid-template-columns:1fr}.nav-r a:first-child{display:none}.together-inner{padding:32px 24px}}
+@media(max-width:640px){.cards{grid-template-columns:1fr}.nav-r a:first-child{display:none}.together-inner{padding:32px 24px}[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}}
 
 .app-icon{width:48px;height:48px;border-radius:12px;object-fit:cover}
 .card-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 .nav-icon{width:28px;height:28px;border-radius:7px;vertical-align:middle;margin-right:4px;outline:1px solid var(--bg)}
 .hero-icon{width:clamp(160px,22vw,240px);height:auto;border-radius:36px;display:block;margin:0 auto 36px;animation:fu .6s ease both}
+
+/* WATCH FLOW */
+.watch-flow{display:flex;align-items:center;justify-content:center;gap:0;margin:40px auto 32px;max-width:700px;flex-wrap:nowrap}
+.watch-flow-item{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
+.watch-flow-item img{width:140px;height:168px;border-radius:36px;object-fit:cover;border:1px solid var(--border);transition:transform .3s}
+.watch-flow-item img:hover{transform:translateY(-4px)}
+.watch-flow-arrow{color:var(--ai);font-size:1.4rem;opacity:.5;padding:0 12px;flex-shrink:0;line-height:1}
+.watch-flow-dot{color:var(--sun);font-size:1.8rem;opacity:.3;padding:0 20px;flex-shrink:0;line-height:1}
+.watch-flow-label{font-size:.84rem;color:var(--dim);margin-top:10px;text-align:center}
+.watch-section-label{color:var(--muted);font-size:1.05rem;margin-top:24px;max-width:520px;display:inline-block;line-height:1.7}
+h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3vw,1.8rem);font-weight:400;margin-bottom:8px}
+
+/* DOWNLOAD BUTTONS */
+.dl-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.dl-btns .btn{padding:16px 32px;font-size:1.05rem}
+
+@media(max-width:520px){.watch-flow{gap:0}.watch-flow-item img{width:100px;height:120px;border-radius:26px}.watch-flow-arrow{font-size:1rem;padding:0 6px}.watch-flow-dot{padding:0 10px;font-size:1.2rem}}
+
+/* SIMPLE SECTIONS */
+.simple-section{max-width:960px;margin:0 auto;padding:60px 28px}
+.simple-section h2{font-family:var(--serif);font-style:italic;font-size:clamp(1.5rem,3vw,2rem);font-weight:400;margin-bottom:14px}
+.simple-section p{color:var(--muted);font-size:1.1rem;line-height:1.7;max-width:600px;margin-bottom:16px}
+
+.rv{opacity:0;transform:translateY(20px);transition:all .65s cubic-bezier(.16,1,.3,1)}
+.rv.vis{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
@@ -114,51 +139,102 @@ footer a:hover{color:var(--text)}
   <div class="hc">
     <img src="/images/AppIcon-1024_1.png" class="hero-icon" alt="Starr Apps">
     <div class="pill"><div class="dot"></div>Free on the App Store</div>
-    <h1>Your own <span class="c-a">AI</span> on your iPhone — talk to it from your Apple Watch.<br>Real <span class="c-s">sunlight</span> tracking, right on your wrist.</h1>
-    <p class="hp">Two revolutionary apps that bring powerful, private intelligence and natural health insights directly to your devices — no internet required.</p>
-    <ul class="hp-list">
-      <li><strong>Starr AI:</strong> A true on-device AI assistant that lives on your phone and responds instantly from your Apple Watch. Ask anything, anywhere — even offline on planes or abroad.</li>
-      <li><strong>Sun Light:</strong> Turns your Apple Watch's ambient light sensor into a smart sunlight companion, giving you daily goals, streaks, and a Circadian Score to support better energy, mood, and sleep.</li>
-    </ul>
-    <p class="hp">No accounts. No Wi-Fi. No cloud. Just intelligent tools that actually belong to you.</p>
+    <h1>Your own simple <span class="c-a">AI</span> on your iPhone — talk to it from your Apple Watch.<br>Simple <span class="c-s">sunlight</span> tracking on your Apple Watch.</h1>
   </div>
 </section>
 
-<div class="cards">
-  <div class="card ca">
-    <div class="card-header">
-      <img src="/starr-ai/icon_1024x1024.png" class="app-icon" alt="Starr AI">
-      <h2>Starr AI</h2>
-    </div>
-    <div class="badge">AI Assistant</div>
-    <p>Talk to your own AI directly from your Apple Watch. A powerful, fully offline AI that runs entirely on your iPhone — and lets you ask questions, get answers, brainstorm, or translate instantly from your wrist. Download the model once and use it anywhere: on flights, in remote areas, or abroad. No internet, no account, no subscription — ever.</p>
-    <a href="/starr-ai" class="btn btn-a">Learn more &rarr;</a>
-  </div>
-  <div class="card cs">
-    <div class="card-header">
-      <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" class="app-icon" alt="Sun Light">
-      <h2>Sun Light</h2>
-    </div>
-    <div class="badge">Health + Wellness</div>
-    <p>Your Apple Watch already measures daylight. Sun Light turns that into meaningful daily sunlight goals, streaks, time-of-day insights, and a Circadian Score — helping you naturally improve energy, mood, and sleep.</p>
-    <a href="/sun-light" class="btn btn-s">Learn more &rarr;</a>
-  </div>
-</div>
+<!-- WATCH EXPERIENCE -->
+<section style="padding-top:0;padding-bottom:60px">
+  <div class="wrap" style="text-align:center">
+    <h2 class="section-h">Simple on your wrist.</h2>
 
-<section class="together">
-  <div class="together-inner">
-    <div class="together-icons">
+    <!-- Starr AI Watch Flow -->
+    <div class="watch-flow rv" style="margin-top:32px">
+      <div class="watch-flow-item">
+        <img src="/images/starr-ai/Starr_Watch_Home.png" alt="Starr AI on Apple Watch — Ask me anything">
+      </div>
+      <div class="watch-flow-arrow">→</div>
+      <div class="watch-flow-item">
+        <img src="/images/starr-ai/Starr_Watch_TextInput.png" alt="Typing a question on Apple Watch">
+      </div>
+      <div class="watch-flow-arrow">→</div>
+      <div class="watch-flow-item">
+        <img src="/images/starr-ai/Starr_Watch_NYCResponse.png" alt="Starr AI response about New York City">
+      </div>
+    </div>
+    <p class="watch-section-label"><strong>Starr AI</strong> — Ask anything and get answers directly from your Apple Watch.</p>
+
+    <!-- Sun Light Watch Flow -->
+    <div class="watch-flow rv" style="margin-top:48px">
+      <div class="watch-flow-item">
+        <img src="/images/sun-light/watch-ring.PNG" alt="Sun Light progress ring on Apple Watch">
+      </div>
+      <div class="watch-flow-dot">&#183;</div>
+      <div class="watch-flow-item">
+        <img src="/images/sun-light/watch-pyramid.PNG" alt="Sun Light pyramid on Apple Watch">
+      </div>
+    </div>
+    <p class="watch-section-label"><strong>Sun Light</strong> — See your daily sunlight progress at a glance on your Apple Watch.</p>
+  </div>
+</section>
+
+<!-- TWO SIMPLE APPS -->
+<section style="padding:0 28px 60px;border-top:1px solid var(--border)">
+  <div class="simple-section" style="padding-left:0;padding-right:0">
+    <h2 style="text-align:center;margin-bottom:48px">Two simple apps that just work.</h2>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:860px;margin:0 auto">
+      <div>
+        <div class="card-header">
+          <img src="/starr-ai/icon_1024x1024.png" class="app-icon" alt="Starr AI">
+          <h2 style="margin-bottom:0">Starr AI</h2>
+        </div>
+        <p style="color:var(--muted);font-size:1.05rem;line-height:1.7;margin-top:12px">Simple AI that lives on your iPhone.</p>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.7">Quick answers, translations, and help — even when you're offline or away from your phone. Just raise your wrist and ask.</p>
+        <a href="/starr-ai" class="btn btn-a" style="margin-top:20px">Learn more &rarr;</a>
+      </div>
+      <div>
+        <div class="card-header">
+          <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" class="app-icon" alt="Sun Light">
+          <h2 style="margin-bottom:0">Sun Light</h2>
+        </div>
+        <p style="color:var(--muted);font-size:1.05rem;line-height:1.7;margin-top:12px">Simple sunlight tracking on your Apple Watch.</p>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.7">Raise your wrist to see your daily light progress and how it supports your energy and sleep.</p>
+        <a href="/sun-light" class="btn btn-s" style="margin-top:20px">Learn more &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BETTER TOGETHER -->
+<section style="padding:60px 28px;border-top:1px solid var(--border)">
+  <div class="wrap" style="max-width:640px;text-align:center">
+    <div class="together-icons" style="margin-bottom:20px">
       <img src="/starr-ai/icon_1024x1024.png" alt="Starr AI">
       <span class="plus">+</span>
       <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" alt="Sun Light">
     </div>
-    <h2>Better together — on your wrist and in your pocket</h2>
-    <p class="together-desc">Starr AI and Sun Light unlock something truly special when used side by side.</p>
-    <ul class="together-list">
-      <li>Speak to your private, offline AI straight from your Apple Watch with <strong>Starr AI</strong> — no pulling out your phone, no waiting for a connection.</li>
-      <li>Track real sunlight exposure every day with <strong>Sun Light</strong> and turn that data into actionable health insights for better circadian rhythm, mood, and rest.</li>
-    </ul>
-    <p class="together-desc">Both apps run completely locally on your devices. No cloud. No accounts. No subscriptions. Together they transform your iPhone and Apple Watch into a more intelligent, personal, and health-aware system — designed entirely for you.</p>
+    <h2>Better together</h2>
+    <p style="color:var(--muted);font-size:1.1rem;line-height:1.7;margin-bottom:12px">Use Starr AI for fast help anytime.</p>
+    <p style="color:var(--muted);font-size:1.1rem;line-height:1.7;margin-bottom:12px">Use Sun Light to gently build healthier light habits every day.</p>
+    <p style="color:var(--muted);font-size:1.1rem;line-height:1.7;margin-bottom:0">Both apps run completely on your devices — no accounts, no subscriptions, no Wi-Fi required.</p>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section style="padding:60px 28px 80px;text-align:center">
+  <div class="wrap">
+    <h2>Download now</h2>
+    <div class="dl-btns">
+      <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="btn btn-a">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download Starr AI
+      </a>
+      <a href="https://apps.apple.com/us/app/sun-light-solar-wellness/id6760528131" class="btn btn-s">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download Sun Light
+      </a>
+    </div>
   </div>
 </section>
 
@@ -168,5 +244,9 @@ footer a:hover{color:var(--text)}
   <a href="/terms">Terms</a>
   <a href="https://x.com/StarrApps">X</a>
 </footer>
+<script>
+const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>o.observe(el));
+</script>
 </body>
 </html>
