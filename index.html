@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/starr-ai/icon_1024x1024.png">
+<link rel="apple-touch-icon" href="/starr-ai/icon_1024x1024.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Starr Apps — Private iOS Apps for Real Life</title>
 <meta name="description" content="Two iOS apps. One runs AI without internet. The other tracks your sunlight. No accounts, no subscriptions, no cloud.">
@@ -63,14 +65,17 @@ footer a:hover{color:var(--text)}
 
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:640px){.cards{grid-template-columns:1fr}.nav-r a:first-child{display:none}}
+
+.app-icon{width:48px;height:48px;border-radius:12px;object-fit:cover;margin-bottom:14px}
+.nav-icon{width:20px;height:20px;border-radius:5px;vertical-align:middle;margin-right:4px}
 </style>
 </head>
 <body>
 <nav><div class="nav-i">
   <a href="/" class="logo">Starr <em>Apps</em></a>
   <div class="nav-r">
-    <a href="/starr-ai">Starr AI</a>
-    <a href="/sun-light">Sun Light</a>
+    <a href="/starr-ai"><img src="/starr-ai/icon_1024x1024.png" class="nav-icon" alt="">Starr AI</a>
+    <a href="/sun-light"><img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" class="nav-icon" alt="">Sun Light</a>
   </div>
 </div></nav>
 
@@ -90,12 +95,14 @@ footer a:hover{color:var(--text)}
 
 <div class="cards">
   <div class="card ca">
+    <img src="/starr-ai/icon_1024x1024.png" class="app-icon" alt="Starr AI">
     <div class="badge">AI Assistant</div>
     <h2>Starr AI</h2>
     <p>A real AI that runs entirely on your iPhone. Download the model once, then use it anywhere — planes, mountains, abroad. No internet, no account, no subscription.</p>
     <a href="/starr-ai" class="btn btn-a">Learn more &rarr;</a>
   </div>
   <div class="card cs">
+    <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" class="app-icon" alt="Sun Light">
     <div class="badge">Health + Wellness</div>
     <h2>Sun Light</h2>
     <p>Your Apple Watch already measures daylight. Sun Light turns that into a daily goal, streaks, time-of-day breakdowns, and a Circadian Score you can act on.</p>
