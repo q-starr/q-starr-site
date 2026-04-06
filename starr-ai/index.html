@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Starr AI — Offline AI for iPhone & Apple Watch</title>
+<title>Starr AI â Offline AI for iPhone & Apple Watch</title>
 <meta name="description" content="AI that works without internet. Download once, use anywhere. On-device language model, no account, no subscription. Free on the App Store.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.7;overflow-x:hidden;font-size:17px}
-
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(8,9,12,0.8);border-bottom:1px solid var(--border)}
 .nav-i{max-width:var(--max);margin:0 auto;padding:0 28px;height:56px;display:flex;align-items:center;justify-content:space-between}
@@ -53,7 +52,7 @@ h2{font-family:var(--serif);font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:400
 .sdesc{color:var(--muted);font-size:1.08rem;max-width:520px;line-height:1.7;margin-bottom:48px}
 
 /* COMPARISON TABLE */
-.cmp{width:100%;border-collapse:collapse;margin-top:8px;font-size:.88rem}
+.cmp{width:100%;border-collapse:collapse;margin-top:8px;font-sizee:.88rem}
 .cmp th{text-align:left;padding:14px 16px;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);border-bottom:1px solid var(--border)}
 .cmp td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top}
 .cmp tr:last-child td{border-bottom:none}
@@ -124,14 +123,19 @@ footer a{color:var(--muted);text-decoration:none;font-size:.78rem;margin:0 10px}
 footer a:hover{color:var(--text)}
 
 /* SCREENSHOTS */
-.screenshots{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:56px;padding:0 28px}
-.phone{width:220px;height:460px;background:var(--card);border:1px solid var(--border);border-radius:32px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:transform .3s}
+.screenshots{display:flex;gap:18px;margin-top:56px;padding:0 28px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.screenshots::-webkit-scrollbar{display:none}
+.phone{min-width:200px;width:200px;height:420px;background:var(--card);border:1px solid var(--border);border-radius:28px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:transform .3s;scroll-snap-align:start;flex-shrink:0}
 .phone:hover{transform:translateY(-4px)}
 .phone .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:80px;height:24px;background:var(--bg);border-radius:0 0 14px 14px}
-.phone img{width:100%;height:100%;object-fit:cover;border-radius:32px}
+.phone img{width:100%;height:100%;object-fit:cover;border-radius:28px}
 .phone .placeholder{color:var(--dim);font-size:.85rem;text-align:center;line-height:1.5}
 .phone .placeholder span{display:block;font-size:1.6rem;margin-bottom:6px}
 .screenshots-note{text-align:center;margin-top:20px;color:var(--dim);font-size:.82rem;font-style:italic}
+.watch{min-width:140px;width:140px;height:168px;background:var(--card);border:1px solid var(--border);border-radius:36px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:transform .3s;scroll-snap-align:start;flex-shrink:0}
+.watch:hover{transform:translateY(-4px)}
+.watch img{width:100%;height:100%;object-fit:cover;border-radius:36px}
+@media(min-width:769px){.screenshots{justify-content:center;overflow-x:visible;flex-wrap:wrap}}
 
 /* REVEAL */
 .rv{opacity:0;transform:translateY(20px);transition:all .65s cubic-bezier(.16,1,.3,1)}
@@ -162,13 +166,13 @@ footer a:hover{color:var(--text)}
   <div class="hero-i">
     <div class="tag">Offline AI for iPhone</div>
     <h1>AI that works at 30,000 feet</h1>
-    <p class="hero-sub">Starr AI runs a language model directly on your iPhone — no internet, no account, no subscription. Downloaded over 600,000 times. Free on the App Store.</p>
+    <p class="hero-sub">Starr AI runs a language model directly on your iPhone â no internet, no account, no subscription. Downloaded over 600,000 times. Free on the App Store.</p>
     <div class="hero-btns">
       <a href="https://apps.apple.com/us/app/starr-ai/id6760642346" class="btn btn-ai">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store — Free
+        App Store â Free
       </a>
-      <a href="#compare" class="btn btn-g">See how it compares ↓</a>
+      <a href="#compare" class="btn btn-g">See how it compares â</a>
     </div>
   </div>
 </section>
@@ -178,13 +182,44 @@ footer a:hover{color:var(--text)}
   <div class="wrap">
     <div class="screenshots rv">
       <div class="phone">
-        <img src="/images/starr-ai/chat.png" alt="Starr AI chat interface — Your own AI in your pocket">
+        <img src="/images/starr-ai/Starr_Screenshot_MeetStarr_6.5.png" alt="Meet Starr â Your free AI companion that works anywhere">
       </div>
       <div class="phone">
-        <img src="/images/starr-ai/settings.png" alt="Starr AI settings showing on-device AI engine options">
+        <img src="/images/starr-ai/Starr_IMG_0369_6.5.png" alt="One-time download â then works everywhere, offline">
       </div>
       <div class="phone">
-        <img src="/images/starr-ai/download.png" alt="Starr AI one-time model download screen">
+        <img src="/images/starr-ai/Starr_Screenshot_ReadyToGo_6.5.png" alt="Ready to Go â works on iPhone and Apple Watch">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/Starr_IMG_0367_6.5.png" alt="Starr AI home screen with suggested prompts">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/Starr_Screenshot_DownloadModel_6.5.png" alt="Download AI model â one-time setup over Wi-Fi">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/Starr_IMG_0370_6.5.png" alt="Starr AI downloading the AI model to your device">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/Starr_IMG_0368_6.5.png" alt="Settings â choose your AI engine and upgrade to Pro">
+      </div>
+    </div>
+
+    <h3 style="font-family:var(--serif);font-style:italic;font-size:1.3rem;text-align:center;margin-top:48px;color:var(--muted)">Apple Watch</h3>
+    <div class="screenshots rv" style="margin-top:20px">
+      <div class="watch">
+        <img src="/images/starr-ai/Starr_Watch_Home.png" alt="Starr AI on Apple Watch â Ask me anything">
+      </div>
+      <div class="watch">
+        <img src="/images/starr-ai/Starr_Watch_TextInput.png" alt="Typing a question on Apple Watch">
+      </div>
+      <div class="watch">
+        <img src="/images/starr-ai/Starr_Watch_Thinking.png" alt="Starr AI thinking on Apple Watch">
+      </div>
+      <div class="watch">
+        <img src="/images/starr-ai/Starr_Watch_NYCResponse.png" alt="Starr AI response about New York City on Apple Watch">
+      </div>
+      <div class="watch">
+        <img src="/images/starr-ai/Starr_Watch_OpenOnIPhone.png" alt="Open Starr on iPhone prompt on Apple Watch">
       </div>
     </div>
   </div>
@@ -195,7 +230,7 @@ footer a:hover{color:var(--text)}
   <div class="wrap">
     <div class="tag">Comparison</div>
     <h2>How Starr AI compares</h2>
-    <p class="sdesc">Every AI assistant requires internet and an account — except this one.</p>
+    <p class="sdesc">Every AI assistant requires internet and an account â except this one.</p>
 
     <div class="tbl-wrap rv">
       <table class="cmp">
@@ -203,18 +238,18 @@ footer a:hover{color:var(--text)}
           <tr><th></th><th>Starr AI</th><th>ChatGPT</th><th>Gemini</th><th>Siri</th></tr>
         </thead>
         <tbody>
-          <tr class="hi"><td>Works offline</td><td class="y">✓ Yes</td><td class="n">✗ No</td><td class="n">✗ No</td><td class="m">~ Limited</td></tr>
-          <tr class="hi"><td>No account needed</td><td class="y">✓ Yes</td><td class="n">✗ No</td><td class="n">✗ No</td><td class="y">✓ Yes</td></tr>
-          <tr class="hi"><td>Data stays on device</td><td class="y">✓ Always</td><td class="n">✗ No</td><td class="n">✗ No</td><td class="m">~ Partial</td></tr>
-          <tr class="hi"><td>Free — no subscription</td><td class="y">✓ Yes</td><td class="m">~ Freemium</td><td class="m">~ Freemium</td><td class="y">✓ Yes</td></tr>
-          <tr class="hi"><td>Apple Watch app</td><td class="y">✓ Yes</td><td class="n">✗ No</td><td class="n">✗ No</td><td class="y">✓ Yes</td></tr>
-          <tr class="hi"><td>Open-ended conversation</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td><td class="n">✗ No</td></tr>
-          <tr class="hi"><td>Translation</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td><td class="y">✓ Yes</td></tr>
-          <tr class="hi"><td>Complex reasoning</td><td class="m">~ Good</td><td class="y">✓ Best</td><td class="y">✓ Strong</td><td class="n">✗ Weak</td></tr>
+          <tr class="hi"><td>Works offline</td><td class="y">â Yes</td><td class="n">â No</td><td class="n">â No</td><td class="m">~ Limited</td></tr>
+          <tr class="hi"><td>No account needed</td><td class="y">â Yes</td><td class="n">â No</td><td class="n">â No</td><td class="y">â Yes</td></tr>
+          <tr class="hi"><td>Data stays on device</td><td class="y">â Always</td><td class="n">â No</td><td class="n">â No</td><td class="m">~ Partial</td></tr>
+          <tr class="hi"><td>Free â no subscription</td><td class="y">â Yes</td><td class="m">~ Freemium</td><td class="m">~ Freemium</td><td class="y">â Yes</td></tr>
+          <tr class="hi"><td>Apple Watch app</td><td class="y">â Yes</td><td class="n">â No</td><td class="n">â No</td><td class="y">â Yes</td></tr>
+          <tr class="hi"><td>Open-ended conversation</td><td class="y">â Yes</td><td class="y">â Yes</td><td class="y">â Yes</td><td class="n">â No</td></tr>
+          <tr class="hi"><td>Translation</td><td class="y">â Yes</td><td class="y">â Yes</td><td class="y">â Yes</td><td class="y">â Yes</td></tr>
+          <tr class="hi"><td>Complex reasoning</td><td class="m">~ Good</td><td class="y">â Best</td><td class="y">â Strong</td><td class="n">â Weak</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="tbl-note">Starr AI uses smaller on-device models — it won't match GPT-4 on complex analysis, but for everyday questions, travel, and translation it's remarkably capable and always available.</p>
+    <p class="tbl-note">Starr AI uses smaller on-device models â it won't match GPT-4 on complex analysis, but for everyday questions, travel, and translation it's remarkably capable and always available.</p>
   </div>
 </section>
 
@@ -223,7 +258,7 @@ footer a:hover{color:var(--text)}
   <div class="wrap">
     <div class="tag">Under the Hood</div>
     <h2>On-device models</h2>
-    <p class="sdesc">Starr AI uses established open-source language models — the same ones used by researchers and developers worldwide — optimized for Apple's Neural Engine via the MLX framework.</p>
+    <p class="sdesc">Starr AI uses established open-source language models â the same ones used by researchers and developers worldwide â optimized for Apple's Neural Engine via the MLX framework.</p>
 
     <div class="specs-grid rv">
       <div class="spec">
@@ -269,22 +304,22 @@ footer a:hover{color:var(--text)}
 
     <div class="uses rv">
       <div class="use">
-        <div class="use-icon">✈️</div>
+        <div class="use-icon">âï¸</div>
         <h4>In-flight assistant</h4>
-        <p>Translate menus, draft emails, get travel tips, or just pass the time with conversation — all at 30,000 feet with no Wi-Fi purchase.</p>
+        <p>Translate menus, draft emails, get travel tips, or just pass the time with conversation â all at 30,000 feet with no Wi-Fi purchase.</p>
       </div>
       <div class="use">
-        <div class="use-icon">🌎</div>
+        <div class="use-icon">ð</div>
         <h4>International travel</h4>
-        <p>No roaming charges, no hunting for Wi-Fi. Translate signs, ask about customs, get directions in natural language — all offline.</p>
+        <p>No roaming charges, no hunting for Wi-Fi. Translate signs, ask about customs, get directions in natural language â all offline.</p>
       </div>
       <div class="use">
-        <div class="use-icon">🏔️</div>
+        <div class="use-icon">ðï¸</div>
         <h4>Remote & outdoors</h4>
         <p>Hiking, camping, road trips through dead zones. Identify plants, get first aid info, or brainstorm without a cell signal.</p>
       </div>
       <div class="use">
-        <div class="use-icon">🔒</div>
+        <div class="use-icon">ð</div>
         <h4>Privacy-first users</h4>
         <p>Your conversations never leave your device. No server logs, no training data, no account. The most private AI assistant available.</p>
       </div>
@@ -303,7 +338,7 @@ footer a:hover{color:var(--text)}
       <div class="step">
         <div class="step-n">01</div>
         <h4>Download from App Store</h4>
-        <p>Install Starr AI for free. The app will download your chosen language model over Wi-Fi (~1–2 GB).</p>
+        <p>Install Starr AI for free. The app will download your chosen language model over Wi-Fi (~1â2 GB).</p>
       </div>
       <div class="step">
         <div class="step-n">02</div>
@@ -313,7 +348,7 @@ footer a:hover{color:var(--text)}
       <div class="step">
         <div class="step-n">03</div>
         <h4>Use it anywhere</h4>
-        <p>Airplane mode, no signal, foreign country — doesn't matter. Starr AI works wherever your phone goes.</p>
+        <p>Airplane mode, no signal, foreign country â doesn't matter. Starr AI works wherever your phone goes.</p>
       </div>
     </div>
   </div>
@@ -324,21 +359,21 @@ footer a:hover{color:var(--text)}
   <div class="wrap">
     <div class="tag">Privacy</div>
     <h2>Your data never leaves your phone</h2>
-    <p class="sdesc">This isn't a marketing claim — it's the architecture. There is no server.</p>
+    <p class="sdesc">This isn't a marketing claim â it's the architecture. There is no server.</p>
 
     <div class="priv-row rv">
       <div class="priv">
-        <div class="priv-ico">🔒</div>
+        <div class="priv-ico">ð</div>
         <h4>On-Device Only</h4>
         <p>The language model runs on your iPhone's Neural Engine. No API calls, no cloud processing, no data transmission.</p>
       </div>
       <div class="priv">
-        <div class="priv-ico">👤</div>
+        <div class="priv-ico">ð¤</div>
         <h4>No Account</h4>
         <p>Open the app and start talking. No email, no password, no sign-up. Nothing to create, nothing to remember.</p>
       </div>
       <div class="priv">
-        <div class="priv-ico">🚫</div>
+        <div class="priv-ico">ð«</div>
         <h4>No Tracking</h4>
         <p>No analytics, no telemetry, no ad SDKs. We don't know who you are and we don't want to.</p>
       </div>
@@ -354,27 +389,27 @@ footer a:hover{color:var(--text)}
 
     <div class="faq-list rv">
       <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does it work without internet?<span class="arr">▼</span></button>
-        <div class="faq-a"><div class="faq-a-i">Starr AI downloads an open-source language model (1–2 GB) to your iPhone during first launch. After that, all inference runs on Apple's Neural Engine — the same chip that powers Face ID and photo processing. No server needed.</div></div>
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does it work without internet?<span class="arr">â¼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Starr AI downloads an open-source language model (1â2 GB) to your iPhone during first launch. After that, all inference runs on Apple's Neural Engine â the same chip that powers Face ID and photo processing. No server needed.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Which iPhones does it work on?<span class="arr">▼</span></button>
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Which iPhones does it work on?<span class="arr">â¼</span></button>
         <div class="faq-a"><div class="faq-a-i">Starr AI works on any iPhone running iOS 17+. For the best experience with the default Phi-4 Mini model, iPhone 15 Pro or newer is recommended (8GB RAM). The SmolLM2 model runs well on older devices with 6GB RAM.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does it compare to ChatGPT?<span class="arr">▼</span></button>
-        <div class="faq-a"><div class="faq-a-i">ChatGPT uses much larger models running on cloud servers, so it's stronger on complex reasoning and long-form analysis. Starr AI uses compact on-device models — it's great for everyday questions, translation, and brainstorming, and it works when ChatGPT literally can't (no internet). Different tools for different moments.</div></div>
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does it compare to ChatGPT?<span class="arr">â¼</span></button>
+        <div class="faq-a"><div class="faq-a-i">ChatGPT uses much larger models running on cloud servers, so it's stronger on complex reasoning and long-form analysis. Starr AI uses compact on-device models â it's great for everyday questions, translation, and brainstorming, and it works when ChatGPT literally can't (no internet). Different tools for different moments.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I change the AI model?<span class="arr">▼</span></button>
-        <div class="faq-a"><div class="faq-a-i">Yes. Starr AI ships with Qwen 2.5 as the default — a strong multilingual model. You can switch to Phi-4 Mini (better for reasoning) or SmolLM2 (lighter, for older devices) in settings.</div></div>
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I change the AI model?<span class="arr">â¼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Yes. Starr AI ships with Qwen 2.5 as the default â a strong multilingual model. You can switch to Phi-4 Mini (better for reasoning) or SmolLM2 (lighter, for older devices) in settings.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there an Apple Watch app?<span class="arr">▼</span></button>
-        <div class="faq-a"><div class="faq-a-i">Yes — Starr AI includes a companion Apple Watch app so you can ask quick questions from your wrist.</div></div>
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Is there an Apple Watch app?<span class="arr">â¼</span></button>
+        <div class="faq-a"><div class="faq-a-i">Yes â Starr AI includes a companion Apple Watch app so you can ask quick questions from your wrist.</div></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will it ever cost money?<span class="arr">▼</span></button>
+        <button class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will it ever cost money?<span class="arr">â¼</span></button>
         <div class="faq-a"><div class="faq-a-i">The core app is free and will stay free. There are no ads, no in-app purchases, and no subscription. The models are open-source and the processing is on your device, so there are no ongoing server costs to pass along.</div></div>
       </div>
     </div>
