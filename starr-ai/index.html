@@ -90,6 +90,12 @@ footer a:hover{color:var(--text)}
 .watch-flow-caption{text-align:center;margin-top:8px}
 .watch-flow-caption h3{font-family:var(--serif);font-style:italic;font-size:clamp(1.2rem,2.5vw,1.6rem);margin-bottom:8px}
 @media(max-width:520px){.watch-flow{gap:0}.watch-flow-item img{width:100px;height:120px;border-radius:26px}.watch-flow-arrow{font-size:1rem;padding:0 6px}}
+
+/* SCREENSHOTS */
+.screenshots{display:flex;flex-wrap:wrap;gap:24px;margin-top:32px;justify-content:center}
+.phone{width:280px;height:588px;background:var(--card);border:1px solid var(--border);border-radius:28px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:transform .3s;flex-shrink:0}
+.phone:hover{transform:translateY(-4px)}
+.phone img{width:100%;height:100%;object-fit:cover;border-radius:28px}
 </style>
 </head>
 <body>
@@ -139,6 +145,30 @@ footer a:hover{color:var(--text)}
       </div>
     </div>
     <p style="color:var(--muted);font-size:1.1rem;margin-top:16px;max-width:520px;display:inline-block;line-height:1.7">Raise your wrist, ask anything, and get a clear reply &mdash; even when your phone is in your pocket.</p>
+  </div>
+</section>
+
+<!-- SEE IT IN ACTION -->
+<section class="dt">
+  <div class="wrap" style="text-align:center">
+    <h2>See it in action</h2>
+    <div class="screenshots rv">
+      <div class="phone">
+        <img src="/images/starr-ai/Starr_Screenshot_MeetStarr_6.5.png" alt="Meet Starr — Your free AI companion that works anywhere">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/Starr_IMG_0369_6.5.png" alt="One-time download — then works everywhere, offline">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/Starr_Screenshot_ReadyToGo_6.5.png" alt="Ready to Go — works on iPhone and Apple Watch">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/Starr_IMG_0367_6.5.png" alt="Starr AI home screen with suggested prompts">
+      </div>
+      <div class="phone">
+        <img src="/images/starr-ai/starr-miami-chat.png" alt="Starr AI answering a question about Miami and Spanish phrases">
+      </div>
+    </div>
   </div>
 </section>
 
