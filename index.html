@@ -82,6 +82,13 @@ footer a:hover{color:var(--text)}
 @media(max-width:640px){.logo{font-size:1.25rem}.nav-icon{width:22px;height:22px;border-radius:5px;margin-right:4px}.nav-r{gap:10px}.nav-r a{font-size:.82rem}}
 .hero-icon{width:clamp(160px,22vw,240px);height:auto;border-radius:36px;display:block;margin:0 auto 36px;animation:fu .6s ease both}
 
+/* APP HEADER (icon + name + tagline above each product section) */
+.app-header{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:6px}
+.app-header img{width:56px;height:56px;border-radius:14px}
+.app-header h2{font-family:var(--serif);font-style:italic;font-size:clamp(2rem,4.5vw,2.8rem);font-weight:400;margin:0;line-height:1}
+.app-sub{color:var(--muted);font-size:1.15rem;margin-bottom:0;font-style:italic;font-family:var(--serif)}
+@media(max-width:520px){.app-header img{width:44px;height:44px;border-radius:10px}.app-header{gap:10px}.app-sub{font-size:1rem}}
+
 /* IPHONE FLOW (Starr AI home-page teaser) */
 .iphone-flow{display:flex;align-items:center;justify-content:center;gap:16px;margin:28px auto 10px;max-width:720px;flex-wrap:wrap}
 .iphone-flow img{width:200px;height:auto;border-radius:28px;border:1px solid var(--border);object-fit:cover;transition:transform .3s}
@@ -124,28 +131,36 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
   <div class="orb o1"></div><div class="orb o2"></div>
   <div class="hc">
     <img src="/images/AppIcon-1024_1.png" class="hero-icon" alt="Starr Apps">
-    <h1>A private pocket <span class="c-a">reference AI</span> on your iPhone.<br>Natural <span class="c-s">sunlight</span> tracking on your Apple Watch.</h1>
-    <p class="hp">Private AI. Helpful sunlight.</p>
+    <h1>Your pocket <span class="c-a">reference AI</span> on your iPhone.<br>Natural <span class="c-s">sunlight</span> tracking on your Apple Watch.</h1>
+    <p class="hp">Offline AI. Helpful sunlight.</p>
   </div>
 </section>
 
-<!-- STARR AI IPHONE SCREENSHOTS -->
+<!-- STARR AI SECTION -->
 <section style="padding-top:0;padding-bottom:48px">
   <div class="wrap" style="text-align:center">
-    <h2 class="section-h">A pocket reference for anything</h2>
+    <div class="app-header">
+      <img src="/starr-ai/icon_1024x1024.png" alt="Starr AI">
+      <h2>Starr AI</h2>
+    </div>
+    <p class="app-sub">A pocket reference for anything</p>
     <div class="iphone-flow rv" style="margin-top:28px;margin-bottom:10px">
       <img src="/images/starr-ai/v1.4.0/01_Hero_EmptyState.png" alt="Starr AI home screen with offline-reference chips">
       <img src="/images/starr-ai/v1.4.0/02_SpanishPhrases.png" alt="Essential Spanish travel phrases answer">
       <img src="/images/starr-ai/v1.4.0/04_FireStarting.png" alt="How to start a fire without matches">
     </div>
-    <p class="watch-section-label">Starr AI &mdash; ask about water, food, travel, and everyday questions, even offline.</p>
+    <p class="watch-section-label">Ask about water, food, travel, and everyday questions &mdash; even offline.</p>
   </div>
 </section>
 
-<!-- NATURAL SUNLIGHT ON YOUR WRIST (Sun Light only) -->
+<!-- SUN LIGHT SECTION -->
 <section style="padding-top:0;padding-bottom:48px">
   <div class="wrap" style="text-align:center">
-    <h2 class="section-h">Natural sunlight on your wrist</h2>
+    <div class="app-header">
+      <img src="/images/sun-light/SunLight_Icon_BrightYellow_1024.png" alt="Sun Light">
+      <h2>Sun Light</h2>
+    </div>
+    <p class="app-sub">Natural sunlight on your wrist</p>
     <div class="watch-flow rv" style="margin-top:24px;margin-bottom:10px">
       <div class="watch-flow-item">
         <img src="/images/sun-light/watch-ring.PNG" alt="Sun Light progress ring on Apple Watch">
@@ -155,7 +170,7 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
         <img src="/images/sun-light/watch-pyramid.PNG" alt="Sun Light pyramid on Apple Watch">
       </div>
     </div>
-    <p class="watch-section-label">Sun Light &mdash; see your daily sunlight progress at a glance, right from your Apple Watch.</p>
+    <p class="watch-section-label">See your daily sunlight progress at a glance, right from your Apple Watch.</p>
   </div>
 </section>
 
