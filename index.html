@@ -82,6 +82,12 @@ footer a:hover{color:var(--text)}
 @media(max-width:640px){.logo{font-size:1.25rem}.nav-icon{width:22px;height:22px;border-radius:5px;margin-right:4px}.nav-r{gap:10px}.nav-r a{font-size:.82rem}}
 .hero-icon{width:clamp(160px,22vw,240px);height:auto;border-radius:36px;display:block;margin:0 auto 36px;animation:fu .6s ease both}
 
+/* IPHONE FLOW (Starr AI home-page teaser) */
+.iphone-flow{display:flex;align-items:center;justify-content:center;gap:16px;margin:28px auto 10px;max-width:720px;flex-wrap:wrap}
+.iphone-flow img{width:200px;height:auto;border-radius:28px;border:1px solid var(--border);object-fit:cover;transition:transform .3s}
+.iphone-flow img:hover{transform:translateY(-4px)}
+@media(max-width:520px){.iphone-flow{gap:10px}.iphone-flow img{width:140px;border-radius:22px}}
+
 /* WATCH FLOW */
 .watch-flow{display:flex;align-items:center;justify-content:center;gap:0;margin:40px auto 32px;max-width:700px;flex-wrap:nowrap}
 .watch-flow-item{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
@@ -120,6 +126,19 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
     <img src="/images/AppIcon-1024_1.png" class="hero-icon" alt="Starr Apps">
     <h1>A private pocket <span class="c-a">reference AI</span> on your iPhone.<br>Natural <span class="c-s">sunlight</span> tracking on your Apple Watch.</h1>
     <p class="hp">Private AI. Helpful sunlight.</p>
+  </div>
+</section>
+
+<!-- STARR AI IPHONE SCREENSHOTS -->
+<section style="padding-top:0;padding-bottom:48px">
+  <div class="wrap" style="text-align:center">
+    <h2 class="section-h">A pocket reference for anything</h2>
+    <div class="iphone-flow rv" style="margin-top:28px;margin-bottom:10px">
+      <img src="/images/starr-ai/v1.4.0/01_Hero_EmptyState.png" alt="Starr AI home screen with offline-reference chips">
+      <img src="/images/starr-ai/v1.4.0/02_SpanishPhrases.png" alt="Essential Spanish travel phrases answer">
+      <img src="/images/starr-ai/v1.4.0/04_FireStarting.png" alt="How to start a fire without matches">
+    </div>
+    <p class="watch-section-label">Starr AI &mdash; ask about water, food, travel, and everyday questions, even offline.</p>
   </div>
 </section>
 
