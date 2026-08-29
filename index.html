@@ -33,6 +33,7 @@
   --text:#F2F4F7;--muted:#E8EAF0;--dim:#B0B8C4;
   --sun:#E8A838;--sun-s:rgba(232,168,56,0.12);
   --ai:#5BB8DB;--ai-s:rgba(91,184,219,0.12);
+  --crew:#43BDB0;--crew-s:rgba(67,189,176,0.12);
   --serif:'Instrument Serif',Georgia,serif;
   --sans:'DM Sans',-apple-system,sans-serif;
 }
@@ -62,11 +63,13 @@ h1{font-family:var(--serif);font-size:clamp(2.4rem,5.5vw,3.8rem);font-weight:400
 .card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.1)}
 .card.ca:hover{box-shadow:0 20px 60px -20px var(--ai-s)}
 .card.cs:hover{box-shadow:0 20px 60px -20px var(--sun-s)}
+.card.cc:hover{box-shadow:0 20px 60px -20px var(--crew-s)}
 .card h2{font-family:var(--serif);font-style:italic;font-size:1.6rem;font-weight:400;margin-bottom:10px}
 .card>p{color:var(--muted);font-size:1rem;line-height:1.7;margin-bottom:24px;flex-grow:1}
 .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:600;font-size:1rem;transition:all .2s;align-self:flex-start}
 .btn-a{background:var(--ai);color:var(--bg)}.btn-a:hover{opacity:.9}
 .btn-s{background:var(--sun);color:var(--bg)}.btn-s:hover{opacity:.9}
+.btn-c{background:var(--crew);color:var(--bg)}.btn-c:hover{opacity:.9}
 
 footer{border-top:1px solid var(--border);padding:36px 28px;text-align:center}
 footer span{color:var(--dim);font-size:.84rem}
@@ -193,6 +196,14 @@ h2.section-h{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,3
         </div>
         <p>Natural sunlight tracking on your Apple Watch. Raise your wrist to see your daily light and how it gently supports your energy and mood.</p>
         <a href="/sun-light" class="btn btn-s" style="margin-top:16px;align-self:center">Learn more &rarr;</a>
+      </div>
+      <div class="card cc" style="text-align:center;grid-column:1/-1">
+        <div class="card-header" style="justify-content:center">
+          <img src="/images/crewline/crewline_icon_1024.png" class="app-icon" alt="Crewline">
+          <h2 style="margin-bottom:0">Crewline</h2>
+        </div>
+        <p>Workforce intelligence for Florida contractors, on the web. Local wage benchmarks, compliance readiness, and H-2B planning across 12 markets &mdash; free during the open beta.</p>
+        <a href="https://crewline.q-starr.app" class="btn btn-c" style="margin-top:16px;align-self:center">Open Crewline &rarr;</a>
       </div>
     </div>
   </div>
